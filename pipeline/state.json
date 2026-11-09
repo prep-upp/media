@@ -7,7 +7,11 @@
       "instagram": "6ae9cad5e29c69a171494a6c",
       "facebook": "6ae9cb88e29c69a171494f53"
     },
-    "slots": ["wed 20:00", "sat 14:00", "sun 13:00"],
+    "slots": [
+      "wed 20:00",
+      "sat 14:00",
+      "sun 13:00"
+    ],
     "timezone": "Africa/Tunis"
   },
   "rotation": [
@@ -27,19 +31,28 @@
     {
       "file": "videos/prepup-6-outils.mp4",
       "tool": "all tools",
-      "music": { "style": "house (synth_all)", "key": "A minor" },
+      "music": {
+        "style": "house (synth_all)",
+        "key": "A minor"
+      },
       "posted": "2026-10-29 by hand on all three channels"
     },
     {
       "file": "videos/prepup-calculateur.mp4",
       "tool": "calculateur (rang estimé)",
-      "music": { "style": "pop", "key": "C major" },
+      "music": {
+        "style": "pop",
+        "key": "C major"
+      },
       "slot": "wed 2026-11-11 20:00"
     },
     {
       "file": "videos/prepup-ressources.mp4",
       "tool": "ressources",
-      "music": { "style": "lofi", "key": "F major 7ths" },
+      "music": {
+        "style": "lofi",
+        "key": "F major 7ths"
+      },
       "slot": "sat 2026-11-14 14:00"
     }
   ],
@@ -47,5 +60,72 @@
     "house / A minor (6-outils)",
     "pop / C major (calculateur)",
     "lofi / F major 7ths (ressources)"
-  ]
+  ],
+  "analytics": {
+    "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
+    "metrics_tracked": [
+      "views",
+      "reach",
+      "avg watch time (s) and % of video length",
+      "likes",
+      "comments",
+      "shares",
+      "saves",
+      "engagement rate"
+    ],
+    "history": [
+      {
+        "video": "videos/prepup-6-outils.mp4",
+        "posted": "2026-10-29",
+        "length_s": 31.5,
+        "hook": "text-only (« 6 outils… »)",
+        "music": "house / A minor",
+        "measured": "2026-11-09",
+        "tiktok": {
+          "views": 598,
+          "reach": 534,
+          "likes": 13,
+          "comments": 0,
+          "shares": 2,
+          "avg_watch_s": 3,
+          "eng_rate": 2.51
+        },
+        "instagram": {
+          "views": 57,
+          "reach": 51,
+          "likes": 0,
+          "comments": 0,
+          "shares": 0,
+          "saves": 0,
+          "avg_watch_s": 3.81,
+          "eng_rate": 0
+        },
+        "facebook": {
+          "impressions": 247,
+          "reactions": 0,
+          "comments": 0,
+          "shares": 0,
+          "clicks": 1,
+          "eng_rate": 0.4
+        },
+        "verdict": "Reach OK on TikTok, but viewers leave at ~3 s (10% of the video). Text-only hook + 31.5 s length is the main problem. Zero comments: CTA never seen."
+      }
+    ]
+  },
+  "strategy": {
+    "current": [
+      "Hook = motion or a number on screen in the first second (never a text-only screen)",
+      "Length 15-22 s",
+      "TikTok is the priority platform (10x Instagram views)",
+      "One tool per video, its most visual moment first"
+    ],
+    "experiments_to_try": [
+      "Compare avg watch time of the calculator reel (number hook, 21 s) against the 6-outils reel (text hook, 31.5 s)",
+      "Try a question in the caption's first line vs a statement",
+      "Try pinning a first comment with the CTA"
+    ],
+    "changelog": [
+      "2026-11-09: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s after 3 s avg watch time on the 6-outils reel"
+    ]
+  }
 }
