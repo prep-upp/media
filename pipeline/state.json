@@ -24,8 +24,8 @@
     "simulateur de filières (Sûr / Probable)"
   ],
   "lessons": [
-    "Reel « 6 outils » (29 oct.) : durée moyenne regardée 3 s sur 31,5 s (TikTok et Instagram). L’accroche doit montrer du mouvement ou un chiffre dès la 1re seconde, jamais un écran de texte seul. Vidéos de 15 à 22 s.",
-    "TikTok fait environ 10× les vues d’Instagram : toujours le garder."
+    "« 6 outils » reel (29 Oct): average watch time 3 s of 31.5 s (TikTok and Instagram). The hook must show motion or a number in the first second, never a text-only screen. Keep videos 15-22 s.",
+    "TikTok gets about 10x Instagram's views: always include it."
   ],
   "videos": [
     {
@@ -36,11 +36,11 @@
         "key": "A minor"
       },
       "posted": "2026-10-29 by hand on all three channels",
-      "nom": "6 outils",
+      "nom": "6 tools",
       "match": "6 outils que chaque prépa",
       "duree_s": 31.5,
-      "accroche": "texte seul",
-      "musique": "house · la mineur"
+      "accroche": "text only",
+      "musique": "house · A minor"
     },
     {
       "file": "videos/prepup-calculateur.mp4",
@@ -50,11 +50,11 @@
         "key": "C major"
       },
       "slot": "wed 2026-11-11 20:00",
-      "nom": "Calculateur de rang",
+      "nom": "Rank calculator",
       "match": "Ton rang au concours",
       "duree_s": 21,
-      "accroche": "chiffre qui défile",
-      "musique": "pop · do majeur"
+      "accroche": "rolling number",
+      "musique": "pop · C major"
     },
     {
       "file": "videos/prepup-ressources.mp4",
@@ -64,11 +64,11 @@
         "key": "F major 7ths"
       },
       "slot": "sat 2026-11-14 14:00",
-      "nom": "Ressources",
+      "nom": "Resources",
       "match": "Tous tes cours et TD",
       "duree_s": 21.5,
-      "accroche": "texte seul",
-      "musique": "lo-fi · fa majeur 7"
+      "accroche": "text only",
+      "musique": "lo-fi · F major 7ths"
     }
   ],
   "music_used": [
@@ -129,18 +129,18 @@
   },
   "strategy": {
     "current": [
-      "Accroche : du mouvement ou un chiffre à l’écran dès la 1re seconde (jamais un écran de texte seul)",
-      "Durée : 15 à 22 s",
-      "TikTok en priorité (10× les vues d’Instagram)",
-      "Un seul outil par vidéo, en commençant par son moment le plus visuel"
+      "Hook: motion or a number on screen in the first second (never a text-only screen)",
+      "Length: 15 to 22 s",
+      "TikTok first (10x Instagram's views)",
+      "One tool per video, starting with its most visual moment"
     ],
     "experiments_to_try": [
-      "Comparer la durée regardée du reel Calculateur (accroche chiffre, 21 s) à celle du reel « 6 outils » (accroche texte, 31,5 s)",
-      "Tester une question en 1re ligne de légende plutôt qu’une affirmation",
-      "Tester un 1er commentaire épinglé avec l’appel à commenter"
+      "Compare the watch time of the Rank calculator reel (number hook, 21 s) with the « 6 outils » reel (text hook, 31.5 s)",
+      "Try a question as the caption's first line instead of a statement",
+      "Try a pinned first comment carrying the call to comment"
     ],
     "changelog": [
-      "9 nov. 2026 : passage des accroches texte / 31,5 s aux accroches mouvement-ou-chiffre / 15-22 s, après 3 s de durée moyenne regardée sur le reel « 6 outils »"
+      "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel"
     ]
   },
   "dashboard": {
@@ -148,5 +148,5 @@
     "url": "https://claude.ai/artifact/Wreee4uZ7pQsL9xzqxLxwN",
     "note": "After each run: python3 toolkit/dashboard_files.py, then upload_asset videos.json and strategie.json and update datasets/videos and datasets/strategie with the new urls and updated.at."
   },
-  "langue": "Write lessons, strategy, experiments and changelog in French: they are shown as-is on the user's dashboard. Give every video a French 'musique' label too."
+  "langue": "Write lessons, strategy, experiments, changelog and the dashboard fields (nom, accroche, musique) in English: they are shown as-is on the user's dashboard. Post captions stay in French for the audience."
 }
