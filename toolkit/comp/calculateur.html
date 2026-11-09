@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=block" rel="stylesheet" />
+<!-- Prep'Up's own production stylesheet: tokens, .float-card, .grad-text… -->
+<link rel="stylesheet" href="/assets/ui-DHqtutAy.css" />
+<style>
+  html, body { margin: 0; width: 540px; height: 960px; overflow: hidden; background: var(--bg); scroll-behavior: auto; }
+  body { font-family: var(--font-body); color: var(--text); }
+  #stage { position: absolute; inset: 0; overflow: hidden; background: var(--bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; will-change: transform; }
+  .layer { position: absolute; inset: 0; }
+  .disp { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+  /* hook */
+  #hook-q { position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-size: 60px; line-height: 1.02; font-weight: 700; }
+  #hook-num { position: absolute; left: 0; right: 0; top: 440px; text-align: center; }
+  #hook-num .n { font-size: 170px; font-weight: 700; line-height: 1; display: inline-block; }
+  #hook-num .tl { font-size: 70px; font-weight: 600; color: var(--violet); margin-right: 10px; vertical-align: 0.55em; }
+  #hook-num .of { font-size: 44px; font-weight: 600; color: var(--text-dim); margin-left: 6px; }
+  #hook-num .lab { display: block; margin-top: 18px; font: 600 15px var(--font-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* captions */
+  .cap { position: absolute; left: 34px; right: 34px; top: 92px; text-align: center; }
+  .cap h2 { margin: 0; font-family: var(--font-display); font-size: 44px; line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+  .cap p { margin: 14px 0 0; font-size: 19px; color: var(--text-dim); font-weight: 500; }
+  .wordmark { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-display); font-weight: 700; font-size: 54px; letter-spacing: -0.02em; }
+  .wordmark img { width: 60px; height: 60px; border-radius: 16px; box-shadow: 0 8px 26px color-mix(in srgb, var(--violet) 50%, transparent); }
+
+  /* phone */
+  #phone { position: absolute; left: 50%; top: 300px; width: 410px; margin-left: -205px; transform-origin: 50% 0; }
+  .bezel { padding: 10px; border-radius: 56px; background: linear-gradient(160deg, #2a2d39, #14161d); box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08) inset; }
+  .screen { position: relative; width: 390px; height: 844px; border-radius: 46px; overflow: hidden; background: var(--bg); }
+  .screen iframe { position: absolute; inset: 0; width: 390px; height: 844px; border: 0; }
+  #tap { position: absolute; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: rgba(255,255,255,.35); border: 2px solid rgba(255,255,255,.8); pointer-events: none; opacity: 0; }
+
+  /* feature cards (real .float-card markup) */
+  #cards { position: absolute; left: 0; right: 0; top: 330px; }
+  #cards .float-card { position: absolute; left: 50%; width: 380px; margin-left: -190px; padding: 22px 26px; }
+  #cards .fc-label { font-size: 14px; }
+  #cards .fc-value { font-family: var(--font-display); font-size: 46px; font-weight: 700; line-height: 1.1; margin: 4px 0 2px; }
+  #cards .fc-sub { font-size: 16px; color: var(--text-dim); }
+
+  /* outro */
+  #outro { text-align: center; }
+  #outro .logo { position: absolute; left: 50%; top: 270px; width: 128px; height: 128px; margin-left: -64px; border-radius: 32px; box-shadow: 0 18px 50px color-mix(in srgb, var(--violet) 55%, transparent); }
+  #outro .name { position: absolute; left: 0; right: 0; top: 425px; font-size: 76px; font-weight: 700; }
+  #outro .url { position: absolute; left: 0; right: 0; top: 530px; font-size: 40px; font-weight: 700; }
+  #outro .tag { position: absolute; left: 0; right: 0; top: 600px; font-size: 20px; color: var(--text-dim); font-weight: 500; }
+  #outro .chips { position: absolute; left: 0; right: 0; top: 648px; display: flex; gap: 10px; justify-content: center; }
+  #outro .chips span { padding: 7px 16px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface-2); font-weight: 600; font-size: 17px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer" id="bg">
+    <div class="blob" id="b1" style="width:480px;height:480px;background:var(--violet)"></div>
+    <div class="blob" id="b2" style="width:420px;height:480px;background:var(--cyan)"></div>
+    <div class="blob" id="b3" style="width:380px;height:380px;background:var(--blue)"></div>
+  </div>
+
+  <!-- 1 · hook -->
+  <div class="layer" id="hook">
+    <div id="hook-q" class="disp">Ton rang au<br/><span class="grad-text">concours</span> ?</div>
+    <div id="hook-num" class="disp"><span class="tl">~</span><span class="n grad-text" id="hn">1521</span><span class="of">/ 1521</span><span class="lab">MP · session 2025</span></div>
+  </div>
+
+  <!-- captions -->
+  <div class="cap" id="cap2"><div class="wordmark"><img src="/logo.png" alt="" />Prep<span class="grad-text">'Up</span></div><p>Tes outils de prépa, 1ère et 2ème année</p></div>
+  <div class="cap" id="cap3a"><h2>Entre tes <span class="grad-text">notes</span>.</h2><p>Coefficients officiels du concours</p></div>
+  <div class="cap" id="cap3b"><h2>Ton <span class="grad-text">rang estimé</span>,<br/>tout de suite.</h2></div>
+  <div class="cap" id="cap4"><h2>Vois où tu peux <span class="grad-text">aller</span>.</h2><p>Sûr · Probable · Hors de portée</p></div>
+  <div class="cap" id="cap5"><h2>Tout ce qu'il te faut<br/>en <span class="grad-text">prépa</span>.</h2></div>
+
+  <!-- phone with the real site -->
+  <div id="phone"><div class="bezel"><div class="screen">
+    <iframe id="f-home" src="/"></iframe>
+    <iframe id="f-calc" src="/calculateur"></iframe>
+    <iframe id="f-sim" src="/calculateur"></iframe>
+    <div id="tap"></div>
+  </div></div></div>
+
+  <!-- 5 · more tools, real hero-card markup -->
+  <div class="layer" id="cards">
+    <div class="float-card" id="c1"><div class="fc-label"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-book"/></svg> Ressources</div><div class="fc-value">300+ docs</div><div class="fc-sub">cours, TD, DS et concours par filière</div></div>
+    <div class="float-card" id="c2"><div class="fc-label"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-chart"/></svg> Chapitres</div><div class="fc-value">2017–2026</div><div class="fc-sub">historique des chapitres au concours</div></div>
+    <div class="float-card" id="c3"><div class="fc-label"><svg class="icon" aria-hidden="true"><use href="/icons.svg#i-building"/></svg> Places 2026</div><div class="fc-value"><span class="grad-text">3 238</span> places</div><div class="fc-sub">par école et spécialité, d'après le JORT</div></div>
+  </div>
+
+  <!-- 6 · outro -->
+  <div class="layer" id="outro">
+    <img class="logo" src="/logo.png" alt="" />
+    <div class="name disp">Prep<span class="grad-text">'Up</span></div>
+    <div class="url disp grad-text">prep-upp.com</div>
+    <div class="tag">Gratuit · sans inscription</div>
+    <div class="chips"><span>MP</span><span>PC</span><span>T</span><span>BG</span></div>
+  </div>
+</div>
+
+<script>
+// ---------- timing (120 BPM: beat 0.5 s) ----------
+const T = { reveal: 3, calc: 6, sim: 11, more: 15.5, outro: 18, end: 21 };
+const NOTES = ['15', '13.5', '14', '16', '17', '12', '13', '15'];
+const TYPE_START = 6.25, TICK = 0.125; // one character per 16th note
+const CHAR_TIMES = []; // [time, field, prefix]
+{ let k = 0; NOTES.forEach((n, i) => { for (let c = 1; c <= n.length; c++) CHAR_TIMES.push([TYPE_START + TICK * k++, i, n.slice(0, c)]); }); }
+const TYPE_END = TYPE_START + TICK * CHAR_TIMES.length;
+window.CHAR_TIMES = CHAR_TIMES;
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const eOut = (x) => 1 - Math.pow(1 - x, 3);
+const eExpo = (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+const eInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const eBack = (x) => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (id) => document.getElementById(id);
+
+// fade+rise in at tin, quick fade out ending at tout
+function show(el, t, tin, tout, rise = 26, dur = 0.4) {
+  const a = eOut(prog(t, tin, tin + dur));
+  const b = tout == null ? 1 : 1 - prog(t, tout - 0.18, tout);
+  el.style.opacity = Math.min(a, b);
+  el.style.transform = `translateY(${(1 - a) * rise - (1 - b) * 10}px)`;
+  el.style.visibility = a * b > 0 ? 'visible' : 'hidden';
+}
+
+// ---------- iframes ----------
+const frames = {};
+const INJECT = `*,*::before,*::after{transition:none!important;caret-color:transparent!important}
+html{scroll-behavior:auto!important}
+.reveal{opacity:1!important;transform:none!important}
+.fb-fab,#fb-modal,[class*="fb-poll"]{display:none!important}
+::-webkit-scrollbar{display:none}`;
+
+function loaded(f) {
+  return new Promise((res) => {
+    const ok = () => f.contentDocument && f.contentDocument.readyState === 'complete';
+    if (ok()) return res(); f.addEventListener('load', () => res(), { once: true });
+  });
+}
+function prep(f) {
+  const d = f.contentDocument, s = d.createElement('style'); s.textContent = INJECT; d.head.appendChild(s);
+  return d;
+}
+function absTop(w, el) { return el.getBoundingClientRect().top + w.scrollY; }
+function setNotes(d, values) {
+  d.querySelectorAll('#matieres input').forEach((inp, i) => {
+    const v = values[i] ?? '';
+    if (inp.value !== v) { inp.value = v; inp.dispatchEvent(new Event('input', { bubbles: true })); }
+  });
+}
+function animsAt(w, t) { w.document.getAnimations().forEach((a) => { a.pause(); a.currentTime = t * 1000; }); }
+
+window.ready = (async () => {
+  await document.fonts.ready;
+  for (const id of ['f-home', 'f-calc', 'f-sim']) {
+    const f = $(id); await loaded(f); const d = prep(f);
+    await d.fonts.ready; frames[id] = { f, w: f.contentWindow, d };
+  }
+  await Promise.all([...document.images].map((i) => i.complete || new Promise((r) => (i.onload = i.onerror = r))));
+  // calculator: measure layout with every field filled, then clear
+  const c = frames['f-calc'];
+  setNotes(c.d, NOTES);
+  const rows = [...c.d.querySelectorAll('#matieres .matiere-row')].map((r) => absTop(c.w, r));
+  c.m = { tabs: absTop(c.w, c.d.getElementById('calc-tabs')), rows, result: absTop(c.w, c.d.getElementById('result-card')) };
+  setNotes(c.d, []);
+  // simulator: same grades, then the real "Voir les filières" button
+  const s = frames['f-sim'];
+  setNotes(s.d, NOTES); s.d.getElementById('go-simulateur').click();
+  await new Promise((r) => setTimeout(r, 400));
+  s.m = { list: absTop(s.w, s.d.getElementById('sim-summary')) };
+  render(0);
+  return true;
+})();
+
+// ---------- render(t): every frame is a pure function of t ----------
+window.render = function (t) {
+  // background blobs drift slowly
+  $('b1').style.transform = `translate(${-140 + 40 * Math.sin(t * 0.5)}px, ${-170 + 30 * Math.cos(t * 0.4)}px)`;
+  $('b2').style.transform = `translate(${300 + 30 * Math.cos(t * 0.45)}px, ${330 + 50 * Math.sin(t * 0.35)}px)`;
+  $('b3').style.transform = `translate(${90 + 50 * Math.sin(t * 0.3)}px, ${700 + 30 * Math.cos(t * 0.5)}px)`;
+
+  // 1 · hook
+  show($('hook-q'), t, 0.0, T.reveal - 0.05, 40, 0.45);
+  show($('hook-num'), t, 1.0, T.reveal - 0.05, 30, 0.35);
+  const roll = eExpo(prog(t, 1.0, 2.0));
+  $('hn').textContent = Math.round(lerp(1521, 78, roll));
+  const pop = 1 + 0.08 * Math.sin(Math.PI * prog(t, 2.0, 2.3));
+  $('hn').style.transform = `scale(${pop})`;
+
+  // captions
+  show($('cap2'), t, T.reveal + 0.05, T.calc - 0.05);
+  show($('cap3a'), t, T.calc + 0.05, 8.75);
+  show($('cap3b'), t, 8.8, T.sim - 0.05);
+  show($('cap4'), t, T.sim + 0.05, T.more - 0.05);
+  show($('cap5'), t, T.more + 0.05, T.outro - 0.05);
+
+  // phone: rises in at 3.0, leaves at 15.5
+  const ph = $('phone');
+  const pin = eOut(prog(t, T.reveal, T.reveal + 0.6)), pout = eInOut(prog(t, T.more - 0.3, T.more));
+  ph.style.visibility = t >= T.reveal && t < T.more ? 'visible' : 'hidden';
+  ph.style.transform = `translateY(${(1 - pin) * 700 + pout * 760}px) scale(1.12)`;
+
+  const H = frames['f-home'], C = frames['f-calc'], S = frames['f-sim'];
+  const which = t < T.calc ? 'f-home' : t < T.sim ? 'f-calc' : 'f-sim';
+  for (const id in frames) {
+    // screen swap: old content dips out, new content fades in on the beat
+    const start = id === 'f-home' ? 0 : id === 'f-calc' ? T.calc : T.sim;
+    frames[id].f.style.visibility = id === which ? 'visible' : 'hidden';
+    frames[id].f.style.opacity = id === 'f-home' ? 1 : eOut(prog(t, start, start + 0.25));
+    animsAt(frames[id].w, t);
+  }
+
+  // home: drift down from the hero to the tool cards
+  H.w.scrollTo(0, Math.round(lerp(0, 330, eInOut(prog(t, 3.9, 5.9)))));
+
+  // calculator: type grades one 16th-note at a time, then show the rank
+  let typed = [], active = -1;
+  for (const [ct, i, pre] of CHAR_TIMES) if (t >= ct) { typed[i] = pre; active = i; }
+  if (t >= TYPE_END) active = -1;
+  setNotes(C.d, typed);
+  const inputs = C.d.querySelectorAll('#matieres input');
+  if (active >= 0 && C.d.activeElement !== inputs[active]) inputs[active].focus({ preventScroll: true });
+  if (active < 0 && C.d.activeElement && C.d.activeElement.blur) C.d.activeElement.blur();
+  const m = C.m;
+  const base = m.tabs - 76;
+  const typeP = prog(t, TYPE_START, TYPE_END);
+  const rowY = lerp(m.rows[0], m.rows[m.rows.length - 1], typeP);
+  let cy = Math.max(base, rowY - 330);
+  cy = lerp(cy, m.result - 90, eInOut(prog(t, TYPE_END + 0.05, TYPE_END + 0.65)));
+  C.w.scrollTo(0, Math.round(cy));
+
+  // tap on the real "Voir les filières où je peux aller" button
+  const tap = $('tap');
+  const tp = prog(t, 10.35, 10.85);
+  if (t >= T.calc && t < T.sim && tp > 0 && tp < 1) {
+    const r = C.d.getElementById('go-simulateur').getBoundingClientRect();
+    tap.style.left = r.left + r.width / 2 + 'px'; tap.style.top = r.top + r.height / 2 + 'px';
+    tap.style.opacity = tp < 0.25 ? tp / 0.25 : 1 - (tp - 0.25) / 0.75;
+    tap.style.transform = `scale(${0.6 + 0.9 * eOut(tp)})`;
+  } else tap.style.opacity = 0;
+
+  // simulator: scroll through the accessible programmes
+  S.w.scrollTo(0, Math.round(S.m.list - 70 + 420 * eInOut(prog(t, 11.6, 15.1))));
+
+  // 5 · the rest of the toolbox, one card per beat
+  const cards = [['c1', 15.75, 0], ['c2', 16.25, 168], ['c3', 16.75, 336]];
+  for (const [id, tin, y] of cards) {
+    const el = $(id), a = eBack(prog(t, tin, tin + 0.45)), o = prog(t, tin, tin + 0.2) * (1 - prog(t, T.outro - 0.2, T.outro));
+    el.style.opacity = o; el.style.top = y + 'px';
+    el.style.transform = `translateX(${(1 - a) * (id === 'c2' ? 120 : -120)}px) rotate(${(1 - a) * (id === 'c2' ? 4 : -4)}deg)`;
+    el.style.visibility = o > 0 ? 'visible' : 'hidden';
+  }
+
+  // 6 · outro
+  const o = $('outro');
+  o.style.visibility = t >= T.outro ? 'visible' : 'hidden';
+  const lg = o.querySelector('.logo'), lp = prog(t, T.outro, T.outro + 0.45);
+  lg.style.opacity = prog(t, T.outro, T.outro + 0.15);
+  lg.style.transform = `scale(${0.4 + 0.6 * eBack(lp)}) rotate(${(1 - eOut(lp)) * -14}deg)`;
+  show(o.querySelector('.name'), t, T.outro + 0.15, null, 30);
+  show(o.querySelector('.url'), t, T.outro + 0.3, null, 30);
+  show(o.querySelector('.tag'), t, T.outro + 0.45, null, 20);
+  show(o.querySelector('.chips'), t, T.outro + 0.55, null, 20);
+};
+</script>
+</body>
+</html>

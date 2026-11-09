@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=block" rel="stylesheet" />
+<!-- Prep'Up's own production stylesheet: tokens, .float-card, .grad-text… -->
+<link rel="stylesheet" href="/assets/ui-DHqtutAy.css" />
+<style>
+  html, body { margin: 0; width: 540px; height: 960px; overflow: hidden; background: var(--bg); scroll-behavior: auto; }
+  body { font-family: var(--font-body); color: var(--text); }
+  #stage { position: absolute; inset: 0; overflow: hidden; background: var(--bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; }
+  .layer { position: absolute; inset: 0; }
+  .disp { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .vis { visibility: hidden; }
+
+  /* hook */
+  .hk { position: absolute; left: 0; right: 0; white-space: nowrap; text-align: center; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; font-size: 84px; line-height: 1; }
+
+  /* captions: pill + title + sub, every piece animates on its own */
+  .pill { position: absolute; left: 0; right: 0; top: 62px; text-align: center; }
+  .pill span { display: inline-block; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface-2); font: 700 13px var(--font-body); letter-spacing: 0.12em; color: var(--text-dim); }
+  .pill b { color: var(--text); }
+  .ttl { position: absolute; left: 20px; right: 20px; top: 104px; text-align: center; font-family: var(--font-display); font-size: 44px; line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+  .sub { position: absolute; left: 24px; right: 24px; top: 166px; text-align: center; font-size: 21px; color: var(--text-dim); font-weight: 500; }
+  .sub b { color: var(--text); font-weight: 600; }
+  .wordmark { position: absolute; left: 0; right: 0; top: 92px; text-align: center; }
+  .wordmark div { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-display); font-weight: 700; font-size: 54px; letter-spacing: -0.02em; }
+  .wordmark img { width: 60px; height: 60px; border-radius: 16px; box-shadow: 0 8px 26px color-mix(in srgb, var(--violet) 50%, transparent); }
+
+  /* phone */
+  #phone { position: absolute; left: 50%; top: 236px; width: 410px; margin-left: -205px; transform-origin: 50% 0; }
+  .bezel { padding: 10px; border-radius: 56px; background: linear-gradient(160deg, #2a2d39, #14161d); box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08) inset; }
+  .screen { position: relative; width: 390px; height: 844px; border-radius: 46px; overflow: hidden; background: var(--bg); }
+  .screen iframe { position: absolute; inset: 0; width: 390px; height: 844px; border: 0; visibility: hidden; }
+  #tap { position: absolute; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: rgba(255,255,255,.35); border: 2px solid rgba(255,255,255,.8); pointer-events: none; opacity: 0; }
+
+  /* outro */
+  #outro .logo { position: absolute; left: 50%; top: 230px; width: 128px; height: 128px; margin-left: -64px; border-radius: 32px; box-shadow: 0 18px 50px color-mix(in srgb, var(--violet) 55%, transparent); }
+  #outro .name { position: absolute; left: 0; right: 0; top: 385px; text-align: center; font-size: 76px; font-weight: 700; }
+  #outro .url { position: absolute; left: 0; right: 0; top: 490px; text-align: center; font-size: 40px; font-weight: 700; }
+  #outro .tag { position: absolute; left: 0; right: 0; top: 560px; text-align: center; font-size: 20px; color: var(--text-dim); font-weight: 500; }
+  #outro .tools { position: absolute; left: 40px; right: 40px; top: 612px; display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+  #outro .tools span { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface-2); font-weight: 600; font-size: 15px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer">
+    <div class="blob" id="b1" style="width:480px;height:480px;background:var(--violet)"></div>
+    <div class="blob" id="b2" style="width:420px;height:480px;background:var(--cyan)"></div>
+    <div class="blob" id="b3" style="width:380px;height:380px;background:var(--blue)"></div>
+  </div>
+
+  <!-- hook -->
+  <div class="hk vis" id="hk1" style="top:290px">6 outils</div>
+  <div class="hk vis" id="hk2" style="top:385px;font-size:66px">pour toutes les</div>
+  <div class="hk vis" id="hk3" style="top:474px;font-size:72px"><span class="grad-text">filières prépa.</span></div>
+  <div class="hk vis" id="hk4" style="top:590px;font:600 22px var(--font-body);letter-spacing:0.14em;color:var(--text-dim)">MP · PC · T · BG</div>
+
+  <!-- captions (filled from SCENES below) -->
+  <div id="caps"></div>
+
+  <!-- phone with the real site -->
+  <div id="phone" class="vis"><div class="bezel"><div class="screen" id="screen"><div id="tap"></div></div></div></div>
+
+  <!-- outro -->
+  <div class="layer vis" id="outro">
+    <img class="logo" src="/logo.png" alt="" />
+    <div class="name disp">Prep<span class="grad-text">'Up</span></div>
+    <div class="url disp grad-text">prep-upp.com</div>
+    <div class="tag">Gratuit · sans inscription · MP, PC, T, BG</div>
+    <div class="tools"><span>Rang &amp; filières</span><span>Notes à viser</span><span>Places 2026</span><span>Ressources</span><span>Chapitres du concours</span><span>Apprendre à apprendre</span><span>Pomodoro</span></div>
+  </div>
+</div>
+
+<script>
+// ---------- timing (120 BPM: beat 0.5 s, every cut on a beat) ----------
+const BEAT = 0.5, TICK = BEAT / 4;
+const T = { reveal: 2.5, calc: 5, sim: 9, obj: 11, places: 14, res: 17, chap: 20, aa: 23, rk: 26, outro: 28.5, end: 31.5 };
+const NOTES = ['15', '13.5', '14', '16', '17', '12', '13', '15'];
+
+// typed text, one character per 16th note -> also drives the music's ticks
+function typing(start, strings) {
+  const out = []; let k = 0;
+  strings.forEach((s, i) => { for (let c = 1; c <= s.length; c++) out.push([start + TICK * k++, i, s.slice(0, c)]); });
+  return out;
+}
+const TYPE_CALC = typing(5.25, NOTES);
+const TYPE_OBJ = typing(11.5, ['500']);
+const TYPE_RES = typing(17.5, ['complexes']);
+const TAPS = [[8.5, 'f-calc', '#go-simulateur'], [24.0, 'f-aa', '.aa-langue-rond']];
+const AR_AT = 24.5;
+window.EVENTS = {
+  dur: T.end,
+  ticks: [...TYPE_CALC, ...TYPE_OBJ, ...TYPE_RES].map((x) => x[0]),
+  taps: TAPS.map((x) => x[0] + 0.125),
+  cuts: [T.reveal, T.calc, T.sim, T.obj, T.places, T.res, T.chap, T.aa, T.rk, T.outro],
+  reveal: T.reveal, outro: T.outro, hook: [0, 0.5, 1.0],
+};
+
+// caption pieces: [kind, html, tin, tout]
+const CAPS = [
+  ['wordmark', `<div><img src="/logo.png" alt="" />Prep<span class="grad-text">'Up</span></div>`, T.reveal, T.calc],
+  ['sub', 'Tes outils de prépa, 1ère et 2ème année', T.reveal + 0.15, T.calc],
+  ['pill', '<span><b>01</b> / 06</span>', T.calc, T.places],
+  ['ttl', 'Rang &amp; <span class="grad-text">filières</span>', T.calc, T.obj],
+  ['sub', 'Tes notes → <b>ton rang estimé</b>', T.calc + 0.1, T.sim],
+  ['sub', 'Puis <b>où tu peux aller</b>.', T.sim + 0.05, T.obj],
+  ['ttl', 'Notes à <span class="grad-text">viser</span>', T.obj, T.places],
+  ['sub', 'Ton rang cible → <b>les notes à avoir</b>', T.obj + 0.1, T.places],
+  ['pill', '<span><b>02</b> / 06</span>', T.places, T.res],
+  ['ttl', 'Places <span class="grad-text">2026</span>', T.places, T.res],
+  ['sub', '3 238 places, <b>école par école</b>', T.places + 0.1, T.res],
+  ['pill', '<span><b>03</b> / 06</span>', T.res, T.chap],
+  ['ttl', '<span class="grad-text">Ressources</span>', T.res, T.chap],
+  ['sub', 'Cours, TD, DS et sujets, <b>par filière</b>', T.res + 0.1, T.chap],
+  ['pill', '<span><b>04</b> / 06</span>', T.chap, T.aa],
+  ['ttl', 'Chapitres du <span class="grad-text">concours</span>', T.chap, T.aa],
+  ['sub', 'Chaque chapitre, <b>sur 10 sessions</b>', T.chap + 0.1, T.aa],
+  ['pill', '<span><b>05</b> / 06</span>', T.aa, T.rk],
+  ['ttl', 'Apprendre à <span class="grad-text">apprendre</span>', T.aa, T.rk],
+  ['sub', '7 méthodes, <b>en français et en arabe</b>', T.aa + 0.1, T.rk],
+  ['pill', '<span><b>06</b> / 06</span>', T.rk, T.outro],
+  ['ttl', '<span class="grad-text">Pomodoro</span>', T.rk, T.outro],
+  ['sub', 'Minuteur de révision, <b>sur Rakezly</b>', T.rk + 0.1, T.outro],
+];
+
+// iframes: [id, src, from, to]
+const SCREENS = [
+  ['f-home', '/', T.reveal, T.calc],
+  ['f-calc', '/calculateur', T.calc, T.sim],
+  ['f-sim', '/calculateur', T.sim, T.obj],
+  ['f-obj', '/calculateur', T.obj, T.places],
+  ['f-places', '/places-2026', T.places, T.res],
+  ['f-res', '/ressources', T.res, T.chap],
+  ['f-chap', '/chapitres-concours', T.chap, T.aa],
+  ['f-aa', '/apprendre-a-apprendre', T.aa, T.rk],
+  ['f-rk', 'https://rakezly.vercel.app/', T.rk, T.outro],
+];
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const eOut = (x) => 1 - Math.pow(1 - x, 3);
+const eInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const eBack = (x) => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (id) => document.getElementById(id);
+
+// fade+rise in at tin, quick fade out ending at tout
+function show(el, t, tin, tout, rise = 26, dur = 0.4) {
+  const a = eOut(prog(t, tin, tin + dur));
+  const b = tout == null ? 1 : 1 - prog(t, tout - 0.18, tout);
+  el.style.opacity = Math.min(a, b);
+  el.style.transform = `translateY(${(1 - a) * rise - (1 - b) * 10}px)`;
+  el.style.visibility = a * b > 0 ? 'visible' : 'hidden';
+}
+
+// build captions + iframes
+const capEls = CAPS.map(([kind, html, tin, tout]) => {
+  const d = document.createElement('div'); d.className = kind + ' vis'; d.innerHTML = html; $('caps').appendChild(d);
+  return [d, tin, tout];
+});
+const frames = {};
+for (const [id, src, from, to] of SCREENS) {
+  const f = document.createElement('iframe'); f.id = id; f.src = src; $('screen').insertBefore(f, $('tap'));
+  frames[id] = { f, from, to };
+}
+
+const INJECT = `*,*::before,*::after{transition:none!important;caret-color:transparent!important}
+html{scroll-behavior:auto!important}
+.reveal{opacity:1!important;transform:none!important}
+.fb-fab,#fb-modal,[class*="fb-poll"]{display:none!important}
+::-webkit-scrollbar{display:none}`;
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+function loaded(f) {
+  return new Promise((res) => {
+    let done = false; const fin = () => { if (!done) { done = true; res(); } };
+    f.addEventListener('load', fin, { once: true }); setTimeout(fin, 15000);
+    try { if (f.contentDocument && f.contentDocument.readyState === 'complete' && f.contentDocument.URL !== 'about:blank') fin(); } catch (e) {}
+  });
+}
+const absTop = (w, el) => el.getBoundingClientRect().top + w.scrollY;
+function setVal(inp, v) { if (inp.value !== v) { inp.value = v; inp.dispatchEvent(new Event('input', { bubbles: true })); } }
+function setNotes(d, values) { d.querySelectorAll('#matieres input').forEach((inp, i) => setVal(inp, values[i] ?? '')); }
+function typedAt(list, t) { const out = []; let active = -1; for (const [ct, i, pre] of list) if (t >= ct) { out[i] = pre; active = i; } return [out, active]; }
+function focusAt(d, el, on) {
+  if (on && d.activeElement !== el) el.focus({ preventScroll: true });
+  if (!on && d.activeElement === el) el.blur();
+}
+
+window.ready = (async () => {
+  await document.fonts.ready;
+  for (const id in frames) {
+    const F = frames[id]; await loaded(F.f);
+    try { F.w = F.f.contentWindow; F.d = F.f.contentDocument; F.w.document; } catch (e) { F.d = null; }
+    if (F.d) { const s = F.d.createElement('style'); s.textContent = INJECT; F.d.head.appendChild(s); await F.d.fonts.ready; }
+  }
+  await Promise.all([...document.images].map((i) => i.complete || new Promise((r) => (i.onload = i.onerror = r))));
+
+  // calculator: measure with every field filled, then clear
+  const C = frames['f-calc'];
+  setNotes(C.d, NOTES);
+  C.m = { tabs: absTop(C.w, C.d.getElementById('calc-tabs')), rows: [...C.d.querySelectorAll('#matieres .matiere-row')].map((r) => absTop(C.w, r)), result: absTop(C.w, C.d.getElementById('result-card')) };
+  setNotes(C.d, []);
+  // simulator: same grades, then the real "Voir les filières" button
+  const S = frames['f-sim'];
+  setNotes(S.d, NOTES); S.d.getElementById('go-simulateur').click(); await sleep(300);
+  S.m = { list: absTop(S.w, S.d.getElementById('sim-summary')) };
+  // notes à viser tab
+  const O = frames['f-obj'];
+  O.d.querySelector('[data-tab="objectif"]').click(); await sleep(200);
+  setVal(O.d.getElementById('obj-rank-input'), '500'); await sleep(100);
+  O.m = { input: absTop(O.w, O.d.getElementById('obj-rank-input')), mat: absTop(O.w, O.d.getElementById('obj-matieres')) };
+  setVal(O.d.getElementById('obj-rank-input'), '');
+  // places / ressources / chapitres anchors
+  const P = frames['f-places']; P.m = { stats: absTop(P.w, P.d.getElementById('totaux')), list: absTop(P.w, P.d.getElementById('places-list')) };
+  const R = frames['f-res']; R.m = { search: absTop(R.w, R.d.getElementById('res-search')) };
+  const H = frames['f-chap']; H.m = { panel: absTop(H.w, H.d.getElementById('chap-panel')) };
+  H.bars = [...H.d.querySelectorAll('.chap-bar-fill')].map((b) => [b, parseFloat(b.style.width) || 0]);
+  // apprendre: warm up the Arabic font, then back to French
+  const A = frames['f-aa'];
+  const rond = A.d.querySelector('.aa-langue-rond');
+  if (A.d.documentElement.lang !== 'ar') rond.click();
+  await A.d.fonts.ready; await sleep(1500); await A.d.fonts.ready;
+  if (A.d.documentElement.lang !== 'fr') rond.click();
+  render(0);
+  return true;
+})();
+
+// ---------- render(t): every frame is a pure function of t ----------
+window.render = function (t) {
+  $('b1').style.transform = `translate(${-140 + 40 * Math.sin(t * 0.5)}px, ${-170 + 30 * Math.cos(t * 0.4)}px)`;
+  $('b2').style.transform = `translate(${300 + 30 * Math.cos(t * 0.45)}px, ${330 + 50 * Math.sin(t * 0.35)}px)`;
+  $('b3').style.transform = `translate(${90 + 50 * Math.sin(t * 0.3)}px, ${700 + 30 * Math.cos(t * 0.5)}px)`;
+
+  // hook: one line per beat, held together
+  show($('hk1'), t, 0.0, T.reveal - 0.05, 40, 0.35);
+  show($('hk2'), t, 0.5, T.reveal - 0.05, 40, 0.35);
+  show($('hk3'), t, 1.0, T.reveal - 0.05, 40, 0.35);
+  show($('hk4'), t, 1.5, T.reveal - 0.05, 20, 0.35);
+
+  for (const [el, tin, tout] of capEls) show(el, t, tin + 0.02, tout - 0.02);
+
+  // phone in at the reveal, out before the outro
+  const ph = $('phone');
+  const pin = eOut(prog(t, T.reveal, T.reveal + 0.6)), pout = eInOut(prog(t, T.outro - 0.3, T.outro));
+  ph.style.visibility = t >= T.reveal && t < T.outro ? 'visible' : 'hidden';
+  ph.style.transform = `translateY(${(1 - pin) * 760 + pout * 800}px) scale(1.12)`;
+
+  for (const id in frames) {
+    const F = frames[id], on = t >= F.from && t < F.to;
+    F.f.style.visibility = on ? 'visible' : 'hidden';
+    F.f.style.opacity = id === 'f-home' ? 1 : eOut(prog(t, F.from, F.from + 0.25));
+    if (F.d) F.d.getAnimations().forEach((a) => { a.pause(); a.currentTime = t * 1000; });
+  }
+
+  // home
+  frames['f-home'].w.scrollTo(0, Math.round(lerp(0, 330, eInOut(prog(t, 3.4, 4.9)))));
+
+  // 01 calculator: type grades, scroll to the rank
+  {
+    const C = frames['f-calc'], [typed, active] = typedAt(TYPE_CALC, t);
+    const end = TYPE_CALC[TYPE_CALC.length - 1][0] + TICK;
+    setNotes(C.d, typed);
+    const inputs = C.d.querySelectorAll('#matieres input');
+    inputs.forEach((inp, i) => focusAt(C.d, inp, i === active && t < end));
+    const m = C.m, p = prog(t, TYPE_CALC[0][0], end);
+    let y = Math.max(m.tabs - 76, lerp(m.rows[0], m.rows[m.rows.length - 1], p) - 330);
+    y = lerp(y, m.result - 90, eInOut(prog(t, end + 0.05, end + 0.6)));
+    C.w.scrollTo(0, Math.round(y));
+  }
+  // simulator list
+  { const S = frames['f-sim']; S.w.scrollTo(0, Math.round(S.m.list - 70 + 330 * eInOut(prog(t, 9.3, 10.9)))); }
+  // notes à viser: type a target rank, then see the per-subject grades
+  {
+    const O = frames['f-obj'], [typed, active] = typedAt(TYPE_OBJ, t), inp = O.d.getElementById('obj-rank-input');
+    setVal(inp, typed[0] || ''); focusAt(O.d, inp, active >= 0 && t < 12.0);
+    O.w.scrollTo(0, Math.round(lerp(O.m.input - 210, O.m.mat - 150, eInOut(prog(t, 12.9, 13.6)))));
+  }
+  // places 2026
+  { const P = frames['f-places']; P.w.scrollTo(0, Math.round(lerp(P.m.stats - 180, P.m.list - 120, eInOut(prog(t, 15.4, 16.7))))); }
+  // ressources: search
+  {
+    const R = frames['f-res'], [typed, active] = typedAt(TYPE_RES, t), inp = R.d.getElementById('res-search');
+    setVal(inp, typed[0] || ''); focusAt(R.d, inp, active >= 0 && t < 18.9);
+    R.w.scrollTo(0, Math.round(R.m.search - 250 + 140 * eInOut(prog(t, 18.9, 19.8))));
+  }
+  // chapitres: bars grow, then scroll
+  {
+    const H = frames['f-chap'];
+    H.bars.forEach(([b, w], i) => { b.style.width = (w * eOut(prog(t, 20.2 + i * 0.03, 20.9 + i * 0.03))).toFixed(2) + '%'; });
+    H.w.scrollTo(0, Math.round(H.m.panel - 90 + 520 * eInOut(prog(t, 21.0, 22.8))));
+  }
+  // apprendre: switch to Arabic on the beat
+  {
+    const A = frames['f-aa'], want = t >= AR_AT ? 'ar' : 'fr';
+    if (A.d.documentElement.lang !== want) A.d.querySelector('.aa-langue-rond').click();
+    A.w.scrollTo(0, 0);
+  }
+
+  // taps on real buttons
+  const tap = $('tap'); tap.style.opacity = 0;
+  for (const [t0, fid, sel] of TAPS) {
+    const tp = prog(t, t0, t0 + 0.5), F = frames[fid];
+    if (tp <= 0 || tp >= 1 || t < F.from || t >= F.to) continue;
+    const r = F.d.querySelector(sel).getBoundingClientRect();
+    tap.style.left = r.left + r.width / 2 + 'px'; tap.style.top = r.top + r.height / 2 + 'px';
+    tap.style.opacity = tp < 0.25 ? tp / 0.25 : 1 - (tp - 0.25) / 0.75;
+    tap.style.transform = `scale(${0.6 + 0.9 * eOut(tp)})`;
+  }
+
+  // outro
+  const o = $('outro');
+  o.style.visibility = t >= T.outro ? 'visible' : 'hidden';
+  const lg = o.querySelector('.logo'), lp = prog(t, T.outro, T.outro + 0.45);
+  lg.style.opacity = prog(t, T.outro, T.outro + 0.15);
+  lg.style.transform = `scale(${0.4 + 0.6 * eBack(lp)}) rotate(${(1 - eOut(lp)) * -14}deg)`;
+  show(o.querySelector('.name'), t, T.outro + 0.15, null, 30);
+  show(o.querySelector('.url'), t, T.outro + 0.3, null, 30);
+  show(o.querySelector('.tag'), t, T.outro + 0.45, null, 20);
+  [...o.querySelectorAll('.tools span')].forEach((s, i) => show(s, t, T.outro + 0.5 + i * 0.125, null, 14, 0.3));
+};
+</script>
+</body>
+</html>
