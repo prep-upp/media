@@ -14,7 +14,7 @@ for v in s['videos']:
         'legende_debut': v['match'],
         'duree_s': v['duree_s'],
         'accroche': v['accroche'],
-        'musique': f"{music.get('style', '')} · {music.get('key', '')}",
+        'musique': v.get('musique') or f"{music.get('style', '')} · {music.get('key', '')}",
         'experience': v.get('experiment', ''),
         'fichier': v['file'],
     })
