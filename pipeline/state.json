@@ -35,7 +35,11 @@
         "style": "house (synth_all)",
         "key": "A minor"
       },
-      "posted": "2026-10-29 by hand on all three channels"
+      "posted": "2026-10-29 by hand on all three channels",
+      "nom": "6 outils",
+      "match": "6 outils que chaque prépa",
+      "duree_s": 31.5,
+      "accroche": "texte seul"
     },
     {
       "file": "videos/prepup-calculateur.mp4",
@@ -44,7 +48,11 @@
         "style": "pop",
         "key": "C major"
       },
-      "slot": "wed 2026-11-11 20:00"
+      "slot": "wed 2026-11-11 20:00",
+      "nom": "Calculateur de rang",
+      "match": "Ton rang au concours",
+      "duree_s": 21,
+      "accroche": "chiffre qui défile"
     },
     {
       "file": "videos/prepup-ressources.mp4",
@@ -53,7 +61,11 @@
         "style": "lofi",
         "key": "F major 7ths"
       },
-      "slot": "sat 2026-11-14 14:00"
+      "slot": "sat 2026-11-14 14:00",
+      "nom": "Ressources",
+      "match": "Tous tes cours et TD",
+      "duree_s": 21.5,
+      "accroche": "texte seul"
     }
   ],
   "music_used": [
@@ -127,5 +139,10 @@
     "changelog": [
       "2026-11-09: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s after 3 s avg watch time on the 6-outils reel"
     ]
+  },
+  "dashboard": {
+    "slug": "f1c7aaf8-d5a8-494b-9fd4-05c26ecf3835",
+    "url": "https://claude.ai/artifact/Wreee4uZ7pQsL9xzqxLxwN",
+    "note": "After each run: python3 toolkit/dashboard_files.py, then upload_asset videos.json and strategie.json and update datasets/videos and datasets/strategie with the new urls and updated.at."
   }
 }
