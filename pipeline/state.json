@@ -25,7 +25,8 @@
   ],
   "lessons": [
     "« 6 outils » reel (29 Oct): average watch time 3 s of 31.5 s (TikTok and Instagram). The hook must show motion or a number in the first second, never a text-only screen. Keep videos 15-22 s.",
-    "TikTok gets about 10x Instagram's views: always include it."
+    "TikTok gets about 10x Instagram's views: always include it.",
+    "10 Nov: no new video published since the 6-tools reel, so no new evidence. The first real comparison comes after Wednesday's Rank calculator reel."
   ],
   "videos": [
     {
@@ -69,12 +70,33 @@
       "duree_s": 21.5,
       "accroche": "text only",
       "musique": "lo-fi · F major 7ths"
+    },
+    {
+      "file": "videos/prepup-notes-a-viser.mp4",
+      "tool": "notes à viser",
+      "music": {
+        "style": "trap",
+        "key": "A minor"
+      },
+      "slot": "sun 2026-11-15 13:00",
+      "nom": "Target grades",
+      "match": "Quelle moyenne te faut-il pour ton rang visé",
+      "duree_s": 17,
+      "accroche": "rolling number",
+      "musique": "trap · A minor",
+      "experiment": "question as the caption's first line",
+      "buffer_posts": {
+        "tiktok": "6af2e55407c5e29b2eaa47c9",
+        "instagram": "6af2e5626043a21c9f5ed9f4",
+        "facebook": "6af2e5646043a21c9f5eda97"
+      }
     }
   ],
   "music_used": [
     "house / A minor (6-outils)",
     "pop / C major (calculateur)",
-    "lofi / F major 7ths (ressources)"
+    "lofi / F major 7ths (ressources)",
+    "trap / A minor (notes-a-viser)"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
@@ -95,15 +117,16 @@
         "length_s": 31.5,
         "hook": "text-only (« 6 outils… »)",
         "music": "house / A minor",
-        "measured": "2026-11-09",
+        "measured": "2026-11-10",
         "tiktok": {
-          "views": 598,
-          "reach": 534,
+          "views": 600,
+          "reach": 535,
           "likes": 13,
           "comments": 0,
           "shares": 2,
-          "avg_watch_s": 3,
-          "eng_rate": 2.51
+          "avg_watch_s": 2.99,
+          "eng_rate": 2.5,
+          "avg_watch_pct": 9.5
         },
         "instagram": {
           "views": 57,
@@ -113,17 +136,18 @@
           "shares": 0,
           "saves": 0,
           "avg_watch_s": 3.81,
-          "eng_rate": 0
+          "eng_rate": 0,
+          "avg_watch_pct": 12.1
         },
         "facebook": {
-          "impressions": 247,
+          "impressions": 248,
           "reactions": 0,
           "comments": 0,
           "shares": 0,
-          "clicks": 1,
-          "eng_rate": 0.4
+          "clicks": 2,
+          "eng_rate": 0.81
         },
-        "verdict": "Reach OK on TikTok, but viewers leave at ~3 s (10% of the video). Text-only hook + 31.5 s length is the main problem. Zero comments: CTA never seen."
+        "verdict": "Stable since 9 Nov (TikTok 598 → 600 views): the reel has stopped spreading. Viewers still leave at ~3 s (9.5% of 31.5 s on TikTok, 12.1% on Instagram). Still the only published video, so there is nothing to compare yet."
       }
     ]
   },
@@ -135,8 +159,8 @@
       "One tool per video, starting with its most visual moment"
     ],
     "experiments_to_try": [
-      "Compare the watch time of the Rank calculator reel (number hook, 21 s) with the « 6 outils » reel (text hook, 31.5 s)",
-      "Try a question as the caption's first line instead of a statement",
+      "Compare the watch time of the Rank calculator reel (number hook, 21 s) with the « 6 outils » reel (text hook, 31.5 s): measurable from 13 Nov",
+      "Question as the caption's first line instead of a statement: testing on Target grades (Sun 15 Nov), to compare with the statement captions",
       "Try a pinned first comment carrying the call to comment"
     ],
     "changelog": [
