@@ -1,5 +1,5 @@
 # Alternative soundtracks on the same 120 BPM grid (beat 0.5 s), so every cut, tick and tap still lands.
-# usage: python3 synth_styles.py <events.json> <lofi|pop|trap> <out.wav>
+# usage: [KEY_SHIFT=n] python3 synth_styles.py <events.json> <lofi|pop|trap> <out.wav>
 import json, sys, wave
 import numpy as np
 
@@ -12,7 +12,9 @@ REV, OUT = ev['reveal'], ev['outro']
 END = OUT + 2.0  # groove stops, last chord rings
 
 def buf(): return np.zeros((N, 2))
-def hz(m): return 440 * 2 ** ((m - 69) / 12)
+import os
+SHIFT = int(os.environ.get('KEY_SHIFT', '0'))  # transpose every note by this many semitones
+def hz(m): return 440 * 2 ** ((m + SHIFT - 69) / 12)
 def tt(sec): return np.arange(int(sec * SR)) / SR
 def env(n, a, d, sus=0.0, rel=None):
     t = np.arange(n) / SR

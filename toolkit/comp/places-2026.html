@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=block" rel="stylesheet" />
+<!-- Prep'Up's own production stylesheet: tokens, .grad-text… -->
+<link rel="stylesheet" href="/assets/ui-DHqtutAy.css" />
+<style>
+  html, body { margin: 0; width: 540px; height: 960px; overflow: hidden; background: var(--bg); scroll-behavior: auto; }
+  body { font-family: var(--font-body); color: var(--text); }
+  #stage { position: absolute; inset: 0; overflow: hidden; background: var(--bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; }
+  .layer { position: absolute; inset: 0; }
+  .disp { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .vis { visibility: hidden; }
+
+  /* hook: a big counting number above the real page, both on screen from frame 0 */
+  #hk-num { position: absolute; left: 0; right: 0; top: 64px; text-align: center; white-space: nowrap; font: 700 76px/1 var(--font-display); letter-spacing: -0.03em; }
+  #hk-num .w { font-size: 44px; color: var(--text); margin-left: 10px; }
+  #hk-sub { position: absolute; left: 24px; right: 24px; top: 156px; text-align: center; font-size: 22px; color: var(--text-dim); font-weight: 500; }
+  #hk-sub b { color: var(--text); font-weight: 600; }
+
+  .ttl { position: absolute; left: 20px; right: 20px; top: 92px; text-align: center; font-family: var(--font-display); font-size: 44px; line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+  .sub { position: absolute; left: 24px; right: 24px; top: 156px; text-align: center; font-size: 21px; color: var(--text-dim); font-weight: 500; }
+  .sub b { color: var(--text); font-weight: 600; }
+
+  #phone { position: absolute; left: 50%; top: 236px; width: 410px; margin-left: -205px; transform-origin: 50% 0; }
+  .bezel { padding: 10px; border-radius: 56px; background: linear-gradient(160deg, #2a2d39, #14161d); box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08) inset; }
+  .screen { position: relative; width: 390px; height: 844px; border-radius: 46px; overflow: hidden; background: var(--bg); }
+  .screen iframe { position: absolute; inset: 0; width: 390px; height: 844px; border: 0; }
+  #tap { position: absolute; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: rgba(255,255,255,.35); border: 2px solid rgba(255,255,255,.8); pointer-events: none; opacity: 0; }
+
+  #outro .logo { position: absolute; left: 50%; top: 250px; width: 128px; height: 128px; margin-left: -64px; border-radius: 32px; box-shadow: 0 18px 50px color-mix(in srgb, var(--violet) 55%, transparent); }
+  #outro .name { position: absolute; left: 0; right: 0; top: 405px; text-align: center; font-size: 76px; font-weight: 700; }
+  #outro .url { position: absolute; left: 0; right: 0; top: 510px; text-align: center; font-size: 40px; font-weight: 700; }
+  #outro .tag { position: absolute; left: 0; right: 0; top: 578px; text-align: center; font-size: 20px; color: var(--text-dim); font-weight: 500; }
+  #outro .tools { position: absolute; left: 40px; right: 40px; top: 626px; display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+  #outro .tools span { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface-2); font-weight: 600; font-size: 16px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer">
+    <div class="blob" id="b1" style="width:480px;height:480px;background:var(--violet)"></div>
+    <div class="blob" id="b2" style="width:420px;height:480px;background:var(--cyan)"></div>
+    <div class="blob" id="b3" style="width:380px;height:380px;background:var(--blue)"></div>
+  </div>
+
+  <div class="vis" id="hk-num"><span class="grad-text" id="hn">0</span><span class="w">places</span></div>
+  <div class="vis" id="hk-sub">en 2026, <b>école par école</b></div>
+
+  <div id="caps"></div>
+
+  <div id="phone" class="vis"><div class="bezel"><div class="screen" id="screen">
+    <iframe id="f-pl" src="about:blank"></iframe>
+    <div id="tap"></div>
+  </div></div></div>
+
+  <div class="layer vis" id="outro">
+    <img class="logo" src="/logo.png" alt="" />
+    <div class="name disp">Prep<span class="grad-text">'Up</span></div>
+    <div class="url disp grad-text">prep-upp.com</div>
+    <div class="tag">Places 2026 · par école et spécialité</div>
+    <div class="tools"><span>MP</span><span>PC</span><span>T</span><span>BG</span></div>
+  </div>
+</div>
+
+<script>
+// ---------- timing (120 BPM: beat 0.5 s, every cut and action on the beat grid) ----------
+const TICK = 0.125;
+const T = { filtre: 3, search: 7, outro: 12.5, end: 15.5 };
+const SEARCH = 'informatique';
+const TYPED = [...SEARCH].map((c, i) => [7.5 + TICK * i, SEARCH.slice(0, i + 1)]);
+const ACT = { mp: 3.5 };
+const TOTAL = 3238;
+window.EVENTS = {
+  dur: T.end, reveal: 0, outro: T.outro, hook: [0, 0.5],
+  ticks: TYPED.map((x) => x[0]),
+  taps: [ACT.mp],
+  cuts: [T.filtre, T.search, T.outro],
+};
+
+const CAPS = [
+  ['ttl', 'Filtre ta <span class="grad-text">filière</span>', T.filtre, T.search],
+  ['sub', 'MP, PC, T ou BG : <b>tes places à toi</b>', T.filtre + 0.1, T.search],
+  ['ttl', 'Cherche ta <span class="grad-text">spécialité</span>', T.search, T.outro],
+  ['sub', 'Toutes les écoles qui la proposent, <b>avec leurs places</b>', T.search + 0.1, T.outro],
+];
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const eOut = (x) => 1 - Math.pow(1 - x, 3);
+const eInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const eBack = (x) => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (id) => document.getElementById(id);
+
+function show(el, t, tin, tout, rise = 26, dur = 0.4) {
+  const a = eOut(prog(t, tin, tin + dur));
+  const b = tout == null ? 1 : 1 - prog(t, tout - 0.18, tout);
+  el.style.opacity = Math.min(a, b);
+  el.style.transform = `translateY(${(1 - a) * rise - (1 - b) * 10}px)`;
+  el.style.visibility = a * b > 0 ? 'visible' : 'hidden';
+}
+const capEls = CAPS.map(([kind, html, tin, tout]) => {
+  const d = document.createElement('div'); d.className = kind + ' vis'; d.innerHTML = html; $('caps').appendChild(d);
+  return [d, tin, tout];
+});
+
+const INJECT = `*,*::before,*::after{transition:none!important;caret-color:transparent!important}
+html{scroll-behavior:auto!important}
+.reveal{opacity:1!important;transform:none!important}
+.fb-fab,#fb-modal,[class*="fb-poll"]{display:none!important}
+::-webkit-scrollbar{display:none}
+body{padding-bottom:1200px!important}`;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const absTop = (w, el) => el.getBoundingClientRect().top + w.scrollY;
+let F;
+
+const filBtn = (f) => [...F.d.querySelectorAll('#filiere-select button')].find((b) => b.textContent.trim() === f);
+const search = () => F.d.getElementById('places-search');
+function setVal(inp, v) { if (inp && inp.value !== v) { inp.value = v; inp.dispatchEvent(new Event('input', { bubbles: true })); } }
+
+window.ready = (async () => {
+  await document.fonts.ready;
+  const f = $('f-pl');
+  await new Promise((r) => { f.addEventListener('load', r, { once: true }); f.src = '/places-2026'; });
+  F = { f, w: f.contentWindow, d: f.contentDocument };
+  const s = F.d.createElement('style'); s.textContent = INJECT; F.d.head.appendChild(s);
+  await F.d.fonts.ready;
+  await Promise.all([...document.images].map((i) => i.complete || new Promise((r) => (i.onload = i.onerror = r))));
+  F.m = {
+    stats: absTop(F.w, F.d.getElementById('totaux')),
+    fil: absTop(F.w, F.d.getElementById('filiere-select')),
+  };
+  render(0);
+  return true;
+})();
+
+function applyState(t) {
+  const want = t >= ACT.mp ? 'MP' : 'Tous';
+  const b = filBtn(want);
+  if (b && !b.classList.contains('active')) b.click();
+  let typed = ''; for (const [ct, pre] of TYPED) if (t >= ct) typed = pre;
+  setVal(search(), typed);
+  const inp = search();
+  const typing = t >= TYPED[0][0] && t < TYPED[TYPED.length - 1][0] + 0.4;
+  if (typing && F.d.activeElement !== inp) inp.focus({ preventScroll: true });
+  if (!typing && F.d.activeElement === inp) inp.blur();
+}
+
+window.render = function (t) {
+  $('b1').style.transform = `translate(${-140 + 40 * Math.sin(t * 0.5)}px, ${-170 + 30 * Math.cos(t * 0.4)}px)`;
+  $('b2').style.transform = `translate(${300 + 30 * Math.cos(t * 0.45)}px, ${330 + 50 * Math.sin(t * 0.35)}px)`;
+  $('b3').style.transform = `translate(${90 + 50 * Math.sin(t * 0.3)}px, ${700 + 30 * Math.cos(t * 0.5)}px)`;
+
+  // hook: number and real page both visible on the very first frame
+  show($('hk-num'), t, -1, T.filtre - 0.05, 0, 0.01);
+  const n = Math.round(TOTAL * eOut(prog(t, 0, 0.9)));
+  $('hn').textContent = n.toLocaleString('fr-FR').replace(/ | /g, ' ');
+  show($('hk-sub'), t, 0.5, T.filtre - 0.05, 16, 0.3);
+  for (const [el, tin, tout] of capEls) show(el, t, tin + 0.02, tout - 0.02);
+
+  const ph = $('phone');
+  const pout = eInOut(prog(t, T.outro - 0.3, T.outro));
+  ph.style.visibility = t < T.outro ? 'visible' : 'hidden';
+  ph.style.transform = `translateY(${pout * 800}px) scale(1.12)`;
+
+  applyState(t);
+  // start past the site's own entrance fade so the page is fully visible on frame 0
+  F.d.getAnimations().forEach((a) => { a.pause(); a.currentTime = 10000 + t * 1000; });
+
+  // scroll: stats card → filters (+ list) → down the search results
+  const m = F.m;
+  let y = m.stats - 80;
+  y = lerp(y, m.fil - 76, eInOut(prog(t, 2.9, 3.4)));
+  y = lerp(y, m.fil - 76 + 260, eInOut(prog(t, 9.6, 12.0)));
+  F.w.scrollTo(0, Math.round(y));
+
+  const tap = $('tap'); tap.style.opacity = 0;
+  const tp = prog(t, ACT.mp - TICK, ACT.mp + 0.375);
+  if (tp > 0 && tp < 1) {
+    const r = filBtn('MP').getBoundingClientRect();
+    tap.style.left = r.left + r.width / 2 + 'px'; tap.style.top = r.top + r.height / 2 + 'px';
+    tap.style.opacity = tp < 0.25 ? tp / 0.25 : 1 - (tp - 0.25) / 0.75;
+    tap.style.transform = `scale(${0.6 + 0.9 * eOut(tp)})`;
+  }
+
+  const o = $('outro');
+  o.style.visibility = t >= T.outro ? 'visible' : 'hidden';
+  const lg = o.querySelector('.logo'), lp = prog(t, T.outro, T.outro + 0.45);
+  lg.style.opacity = prog(t, T.outro, T.outro + 0.15);
+  lg.style.transform = `scale(${0.4 + 0.6 * eBack(lp)}) rotate(${(1 - eOut(lp)) * -14}deg)`;
+  show(o.querySelector('.name'), t, T.outro + 0.15, null, 30);
+  show(o.querySelector('.url'), t, T.outro + 0.3, null, 30);
+  show(o.querySelector('.tag'), t, T.outro + 0.45, null, 20);
+  [...o.querySelectorAll('.tools span')].forEach((s, i) => show(s, t, T.outro + 0.5 + i * 0.125, null, 14, 0.3));
+};
+</script>
+</body>
+</html>
