@@ -26,7 +26,9 @@
   "lessons": [
     "« 6 outils » reel (29 Oct): average watch time 3 s of 31.5 s (TikTok and Instagram). The hook must show motion or a number in the first second, never a text-only screen. Keep videos 15-22 s.",
     "TikTok gets about 10x Instagram's views: always include it.",
-    "10 Nov: no new video published since the 6-tools reel, so no new evidence. The first real comparison comes after Wednesday's Rank calculator reel."
+    "10 Nov: no new video published since the 6-tools reel, so no new evidence. The first real comparison comes after Wednesday's Rank calculator reel.",
+    "12 Nov (preliminary, 14 h of data): a rolling-number hook and a 21 s length raised the watch share (9.5% → 13.5% on TikTok) but not the seconds watched (~3 s both times). Viewers decide in the first 1-2 s, before the hook plays out, so the very first frame has to grab them.",
+    "Posting through Buffer in the Wed 20:00 slot reached 548 TikTok views in 14 h: timing and posting route are not the problem; holding attention is."
   ],
   "videos": [
     {
@@ -90,13 +92,34 @@
         "instagram": "6af2e5626043a21c9f5ed9f4",
         "facebook": "6af2e5646043a21c9f5eda97"
       }
+    },
+    {
+      "file": "videos/prepup-places-2026.mp4",
+      "tool": "places 2026",
+      "music": {
+        "style": "pop",
+        "key": "D major"
+      },
+      "slot": "wed 2026-11-18 20:00",
+      "nom": "Places 2026",
+      "match": "3 238 places en 2026",
+      "duree_s": 15.5,
+      "accroche": "real app from frame 0 + counting number",
+      "musique": "pop · D major",
+      "experiment": "real app visible from frame 0 (no title card)",
+      "buffer_posts": {
+        "tiktok": "6af58822ae66bc26867d699e",
+        "instagram": "6af588256311ec67c81c4158",
+        "facebook": "6af58828be2095778d9c9b20"
+      }
     }
   ],
   "music_used": [
     "house / A minor (6-outils)",
     "pop / C major (calculateur)",
     "lofi / F major 7ths (ressources)",
-    "trap / A minor (notes-a-viser)"
+    "trap / A minor (notes-a-viser)",
+    "pop / D major (places-2026)"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
@@ -117,15 +140,15 @@
         "length_s": 31.5,
         "hook": "text-only (« 6 outils… »)",
         "music": "house / A minor",
-        "measured": "2026-11-10",
+        "measured": "2026-11-12",
         "tiktok": {
-          "views": 600,
-          "reach": 535,
+          "views": 606,
+          "reach": 539,
           "likes": 13,
           "comments": 0,
           "shares": 2,
           "avg_watch_s": 2.99,
-          "eng_rate": 2.5,
+          "eng_rate": 2.48,
           "avg_watch_pct": 9.5
         },
         "instagram": {
@@ -145,26 +168,68 @@
           "comments": 0,
           "shares": 0,
           "clicks": 2,
-          "eng_rate": 0.81
+          "eng_rate": 0.81,
+          "reach": 228
         },
         "verdict": "Stable since 9 Nov (TikTok 598 → 600 views): the reel has stopped spreading. Viewers still leave at ~3 s (9.5% of 31.5 s on TikTok, 12.1% on Instagram). Still the only published video, so there is nothing to compare yet."
+      },
+      {
+        "video": "videos/prepup-calculateur.mp4",
+        "tool": "calculateur (rang estimé)",
+        "posted": "2026-11-11 20:04 (Wed slot)",
+        "length_s": 21,
+        "hook": "rolling number",
+        "music": "pop · C major",
+        "caption_first_line": "Ton rang au concours… avant le concours 👀",
+        "measured": "2026-11-12 (about 14 h after posting: PRELIMINARY)",
+        "tiktok": {
+          "views": 548,
+          "likes": 6,
+          "comments": 0,
+          "shares": 0,
+          "avg_watch_s": 2.83,
+          "avg_watch_pct": 13.5,
+          "eng_rate": 1.09
+        },
+        "instagram": {
+          "views": 15,
+          "reach": 13,
+          "likes": 0,
+          "comments": 0,
+          "saves": 0,
+          "avg_watch_s": 1.5,
+          "avg_watch_pct": 7.1,
+          "eng_rate": 0
+        },
+        "facebook": {
+          "impressions": 214,
+          "reach": 202,
+          "reactions": 0,
+          "comments": 0,
+          "clicks": 1,
+          "eng_rate": 0.47
+        },
+        "verdict": "Preliminary (14 h). Reach is much faster: 548 TikTok views in 14 h vs 606 for the 6-tools reel in 2 weeks. Watch share rose from 9.5% to 13.5% on TikTok, but only because the video is shorter: viewers still leave at about 3 s (2.83 s vs 2.99 s). The number hook did not keep people longer. Instagram reach is very low (15 views)."
       }
     ]
   },
   "strategy": {
     "current": [
+      "First frame: the real app on screen plus a big number, with no title card (being tested on Places 2026)",
       "Hook: motion or a number on screen in the first second (never a text-only screen)",
       "Length: 15 to 22 s",
       "TikTok first (10x Instagram's views)",
       "One tool per video, starting with its most visual moment"
     ],
     "experiments_to_try": [
-      "Compare the watch time of the Rank calculator reel (number hook, 21 s) with the « 6 outils » reel (text hook, 31.5 s): measurable from 13 Nov",
-      "Question as the caption's first line instead of a statement: testing on Target grades (Sun 15 Nov), to compare with the statement captions",
-      "Try a pinned first comment carrying the call to comment"
+      "Real app visible from frame 0 instead of a full-screen title card: testing on Places 2026 (Wed 18 Nov); compare its seconds watched with the ~3 s baseline",
+      "Question as the caption's first line instead of a statement: testing on Target grades (Sun 15 Nov)",
+      "Try a pinned first comment carrying the call to comment",
+      "If people still leave at ~3 s: start the video on the payoff (the result screen) and show how to get it afterwards"
     ],
     "changelog": [
-      "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel"
+      "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel",
+      "12 Nov 2026: added a first-frame rule (real app + number from frame 0, no title card), after the rolling-number hook raised the watch share but not the ~3 s seconds watched (preliminary data)"
     ]
   },
   "dashboard": {
