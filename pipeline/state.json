@@ -28,7 +28,9 @@
     "TikTok gets about 10x Instagram's views: always include it.",
     "10 Nov: no new video published since the 6-tools reel, so no new evidence. The first real comparison comes after Wednesday's Rank calculator reel.",
     "12 Nov (preliminary, 14 h of data): a rolling-number hook and a 21 s length raised the watch share (9.5% → 13.5% on TikTok) but not the seconds watched (~3 s both times). Viewers decide in the first 1-2 s, before the hook plays out, so the very first frame has to grab them.",
-    "Posting through Buffer in the Wed 20:00 slot reached 548 TikTok views in 14 h: timing and posting route are not the problem; holding attention is."
+    "Posting through Buffer in the Wed 20:00 slot reached 548 TikTok views in 14 h: timing and posting route are not the problem; holding attention is.",
+    "14 Nov (2 videos, 2.5+ days of data each): number hook + 21 s beat text hook + 31.5 s on reach (641 vs 611 TikTok views in a fraction of the time) and watch share (15.2% vs 9.4%), but the seconds watched barely moved (3.2 s vs 3.0 s). Shorter videos help the share; the first 2 seconds are still the bottleneck. Evidence is thin: 2 videos.",
+    "Zero comments after 2 videos and 6 posts: the comment CTAs at the end of the captions are not working, probably because people leave before reading. Instagram reach and watch time are far below TikTok's (22 vs 641 views)."
   ],
   "videos": [
     {
@@ -140,16 +142,16 @@
         "length_s": 31.5,
         "hook": "text-only (« 6 outils… »)",
         "music": "house / A minor",
-        "measured": "2026-11-12",
+        "measured": "2026-11-14",
         "tiktok": {
-          "views": 606,
-          "reach": 539,
-          "likes": 13,
+          "views": 611,
+          "reach": 543,
+          "likes": 12,
           "comments": 0,
           "shares": 2,
-          "avg_watch_s": 2.99,
-          "eng_rate": 2.48,
-          "avg_watch_pct": 9.5
+          "avg_watch_s": 2.96,
+          "eng_rate": 2.29,
+          "avg_watch_pct": 9.4
         },
         "instagram": {
           "views": 57,
@@ -181,35 +183,36 @@
         "hook": "rolling number",
         "music": "pop · C major",
         "caption_first_line": "Ton rang au concours… avant le concours 👀",
-        "measured": "2026-11-12 (about 14 h after posting: PRELIMINARY)",
+        "measured": "2026-11-14 (about 62 h after posting)",
         "tiktok": {
-          "views": 548,
-          "likes": 6,
+          "views": 641,
+          "likes": 11,
           "comments": 0,
           "shares": 0,
-          "avg_watch_s": 2.83,
-          "avg_watch_pct": 13.5,
-          "eng_rate": 1.09
+          "avg_watch_s": 3.2,
+          "avg_watch_pct": 15.2,
+          "eng_rate": 1.72,
+          "reach": 372
         },
         "instagram": {
-          "views": 15,
-          "reach": 13,
+          "views": 22,
+          "reach": 18,
           "likes": 0,
           "comments": 0,
           "saves": 0,
-          "avg_watch_s": 1.5,
-          "avg_watch_pct": 7.1,
+          "avg_watch_s": 1.44,
+          "avg_watch_pct": 6.9,
           "eng_rate": 0
         },
         "facebook": {
-          "impressions": 214,
-          "reach": 202,
+          "impressions": 223,
+          "reach": 208,
           "reactions": 0,
           "comments": 0,
           "clicks": 1,
-          "eng_rate": 0.47
+          "eng_rate": 0.45
         },
-        "verdict": "Preliminary (14 h). Reach is much faster: 548 TikTok views in 14 h vs 606 for the 6-tools reel in 2 weeks. Watch share rose from 9.5% to 13.5% on TikTok, but only because the video is shorter: viewers still leave at about 3 s (2.83 s vs 2.99 s). The number hook did not keep people longer. Instagram reach is very low (15 views)."
+        "verdict": "After 2.5 days it has passed the 6-tools reel's 16-day TikTok total (641 vs 611 views). Watch share 15.2% vs 9.4% (+5.8 pts), but seconds watched only 3.2 vs 2.96 (+0.24 s): the shorter length explains most of the gain; viewers still leave around 3 s. Instagram is weak (22 views, 1.4 s watched); Facebook is steady (~220 impressions). Still zero comments on both videos."
       }
     ]
   },
@@ -217,19 +220,20 @@
     "current": [
       "First frame: the real app on screen plus a big number, with no title card (being tested on Places 2026)",
       "Hook: motion or a number on screen in the first second (never a text-only screen)",
-      "Length: 15 to 22 s",
+      "Length: 15 to 18 s (shorter raised the watch share from 9.4% to 15.2%)",
       "TikTok first (10x Instagram's views)",
       "One tool per video, starting with its most visual moment"
     ],
     "experiments_to_try": [
       "Real app visible from frame 0 instead of a full-screen title card: testing on Places 2026 (Wed 18 Nov); compare its seconds watched with the ~3 s baseline",
       "Question as the caption's first line instead of a statement: testing on Target grades (Sun 15 Nov)",
-      "Try a pinned first comment carrying the call to comment",
-      "If people still leave at ~3 s: start the video on the payoff (the result screen) and show how to get it afterwards"
+      "If people still leave at ~3 s: start the video on the payoff (the result screen) and show how to get it afterwards",
+      "Pinned first comment asking a one-word question (« Ta filière ? MP / PC / T / BG ») to get the first comments: zero so far with caption CTAs"
     ],
     "changelog": [
       "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel",
-      "12 Nov 2026: added a first-frame rule (real app + number from frame 0, no title card), after the rolling-number hook raised the watch share but not the ~3 s seconds watched (preliminary data)"
+      "12 Nov 2026: added a first-frame rule (real app + number from frame 0, no title card), after the rolling-number hook raised the watch share but not the ~3 s seconds watched (preliminary data)",
+      "14 Nov 2026: target length narrowed from 15-22 s to 15-18 s, after the 21 s calculator reel's watch share beat the 31.5 s reel's by 5.8 pts while the seconds watched stayed ~3 s; pinned-comment experiment reworded after zero comments on 6 posts"
     ]
   },
   "dashboard": {
