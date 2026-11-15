@@ -107,26 +107,28 @@
       "match": "3 238 places en 2026",
       "duree_s": 15.5,
       "accroche": "real app from frame 0 + counting number",
-      "musique": "pop · D major",
+      "musique": "Original AI track, UK house (inspired by the viral \"Ramalama (Bang Bang)\" style), ACE-Step 1.5",
       "experiment": "real app visible from frame 0 (no title card)",
       "buffer_posts": {
         "instagram": "6af588256311ec67c81c4158",
         "facebook": "6af58828be2095778d9c9b20"
       },
       "tiktok": {
-        "file": "videos/prepup-places-2026-tiktok-ramalama.mp4",
+        "file": "videos/prepup-places-2026-ukhouse.mp4",
         "caption": "3 238 places en 2026, école par école 🏫\n\n→ Filtre par filière : MP, PC, T ou BG\n→ Cherche ta spécialité : informatique, génie civil, mécanique…\n→ Le nombre de places de chaque école · prep-upp.com (lien en bio)\n\nCommente l'école que tu vises 👇\n\n#prepa #concours #classeprepa #concoursingenieur #ecoledingenieur #prepascientifique",
         "slot_local": "2026-11-18 20:00",
         "status": "to_post",
-        "sound": {
-          "search": "Ramalama (Bang Bang) Róisín Murphy",
-          "title": "Ramalama (Bang Bang)",
-          "artist": "Róisín Murphy",
-          "start_at": "TikTok clip default (official sound is a 1:00 clip)",
-          "bpm": 107.7,
-          "beat_source": "AcousticBrainz low-level beats_position (MBID 277865db-d52b-436f-b9d9-96bc8f166ae1)",
-          "note": "Video is tempo-matched to the song (107.7 BPM, cuts on beats). TikTok only offers a 1:00 clip whose position in the song is unknown, so Rayen aligns the phase by ear in the editor (drag the sound) before Schedule."
-        }
+        "audio": "own (original music inside the video): upload as is, do not add a TikTok sound"
+      },
+      "music_generated": {
+        "model": "ACE-Step 1.5 turbo (MIT, commercial use allowed)",
+        "caption": "Viral TikTok UK house, punchy four-on-the-floor kick, bouncy offbeat bassline, chopped female vocal hooks, bright piano stabs, crisp claps and open hats, energetic and catchy, club-ready mix",
+        "bpm": 120,
+        "key": "A minor",
+        "seed": 1234,
+        "inspired_by": "Ramalama (Bang Bang), Róisín Murphy (top US TikTok, Nov 2026): style only, no melody copied",
+        "wav": "music/places-2026-ukhouse.wav",
+        "chosen_by": "Rayen, out of UK house / Brazilian phonk / Afro house"
       }
     },
     {
@@ -173,7 +175,8 @@
     "pop / C major (calculateur)",
     "lofi / F major 7ths (ressources)",
     "trap / A minor (notes-a-viser)",
-    "pop / D major (places-2026)"
+    "pop / D major (places-2026)",
+    "ACE-Step UK house (inspired by Ramalama) – places-2026"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
@@ -289,7 +292,8 @@
       "14 Nov 2026: target length narrowed from 15-22 s to 15-18 s, after the 21 s calculator reel's watch share beat the 31.5 s reel's by 5.8 pts while the seconds watched stayed ~3 s; pinned-comment experiment reworded after zero comments on 6 posts",
       "15 Nov 2026: stopped generated music (audience feedback: « Lsott madhabik tehki nta wlla haja wllla aala9al chouf 8onneya tanja7 »). Instagram/Facebook now use produced CC BY tracks (Sascha Ende); TikTok goes through the user's PC with a trending sound added in TikTok Studio. Added document slideshows from the site's resources.",
       "2026-11-15: Résumés/cours/TD now go out as photo carousels (IG/FB via Buffer, TikTok photo post via the PC with a trending sound), starting with the MP algorithms sheet. Videos stay for site features.",
-      "2026-11-15: TikTok videos are now beat-synced to a chosen trending song (cuts mapped to its measured beats, PC task adds the exact sound at a given start point). Slideshows keep a free trending pick by mood."
+      "2026-11-15: TikTok videos are now beat-synced to a chosen trending song (cuts mapped to its measured beats, PC task adds the exact sound at a given start point). Slideshows keep a free trending pick by mood.",
+      "2026-11-15: back to music inside the video, now original tracks generated with ACE-Step 1.5 in the style of that week's viral songs (no default style). Places uses a UK house track inspired by \"Ramalama (Bang Bang)\"."
     ]
   },
   "dashboard": {
@@ -301,6 +305,12 @@
   "tiktok_route": "From 15 Nov 2026 TikTok is NOT posted through Buffer. For each new video the cloud pipeline adds, in its videos entry, a 'tiktok' object: {file: 'videos/<name>-tiktok.mp4' (same video, no music), caption: <French caption>, slot_local: 'YYYY-MM-DD HH:MM' Africa/Tunis, mood: <short music mood>, status: 'to_post'}. A scheduled task on the user's Windows PC (Claude desktop app + Chrome) reads this file, uploads that video in TikTok Studio, adds a trending sound matching 'mood', and schedules it at slot_local. Instagram and Facebook stay on Buffer with free CC BY tracks.",
   "beat_sync": {
     "method": "Videos for TikTok: pick a trending song (tokchart.com / charts), get its measured beat positions (AcousticBrainz low-level API, by MusicBrainz id), choose a start second where a beat falls within ~15 ms and tempo is steady, write the real beat times relative to that start into a beats JSON, render with BEATMAP=<json> node render.cjs (composition beat k at 0.5 s is shown exactly on real beat k), upload silent, and put tiktok.sound {search, artist, start_at} so the PC task adds that exact sound at that start point. Never embed the song audio. UPDATE 15 Nov: TikTok library sounds are ~1:00 clips at an unknown point in the song, so the start point cannot be set exactly. The video is tempo-matched to the measured beats; the PC task adds the official sound and stops, and Rayen drags the sound by ear so the first cut hits a beat, then clicks Schedule (tempo match keeps all later cuts on the beat).",
-    "since": "2026-11-15"
+    "since": "2026-11-15",
+    "status": "replaced on 2026-11-15 by music_method (music generated inside the video); kept for reference"
+  },
+  "music_method": {
+    "since": "2026-11-15",
+    "rule": "No default style. For each new video: check what is viral on TikTok that week (tokchart.com US + worldwide), pick a song whose energy fits the video, write an ACE-Step caption describing its STYLE only (genre, groove, instruments, energy; never the title, artist, lyrics or melody), generate 2-3 candidates at the video grid BPM (120) with toolkit/gen_music.py, fit with toolkit/fit_music.py, keep the one with the clearest beat, and note inspired_by in the video entry. Different style from the previous videos when possible.",
+    "why": "Rayen: music must feel like current viral songs; audience disliked the generic synth tracks; TikTok library sounds could not be synced."
   }
 }

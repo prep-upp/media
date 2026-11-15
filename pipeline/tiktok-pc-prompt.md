@@ -12,7 +12,8 @@ Post the next Prep'Up TikTok posts (videos or photo slideshows) with a trending 
    - photos: select ALL the images at once, in order slide-01 to the last, so it becomes a photo post (slideshow). Check the order in the preview: slide-01 (the cover) must be first. If TikTok Studio on the web does not accept a photo post, do NOT post a video instead: stop and tell me.
    - video: upload the single video file.
 
-5. Add a sound: open the Sounds panel.
+5. Sound:
+   - Video with an "audio" field: the video already has its own music. Do NOT add a TikTok sound; keep the original audio at full volume.
    - Video with a "sound" object: search for "sound"."search" and pick the ORIGINAL official sound by "sound"."artist" (not sped-up, slowed, remix or cover). Keep TikTok's default start of the clip, full volume (the video has no audio of its own). Do not try to align it: I do that by ear (see step 8). If that exact sound is not available, do NOT pick another song: stop and tell me.
    - Photo slideshow: look at the trending sounds and pick the one that best matches the "mood" (for example "chill study lofi"). Prefer a song that is clearly trending right now.
 
@@ -23,6 +24,7 @@ Post the next Prep'Up TikTok posts (videos or photo slideshows) with a trending 
 8. Before the final Schedule button:
    - Video with a "sound" object: always STOP here and leave the upload page open in Chrome. Send me a push notification: "Places/<video name> is ready in TikTok Studio: drag the sound so the cuts hit the beat, then click Schedule." I align the sound by ear and click Schedule myself.
    - Photo slideshow: if @prep__upp already has at least one photo post in Posts or Scheduled, click Schedule directly. Otherwise (first slideshow) stop, leave the page open, and send me a push notification asking me to check it and click Schedule myself.
+   - Video with an "audio" field: click Schedule.
    - Anything else: click Schedule.
    Only one post can be left open at a time: if you have to stop on one, finish the others first, and stop on that one last.
 
