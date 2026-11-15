@@ -122,32 +122,42 @@
       }
     },
     {
-      "file": "videos/prepup-fiche-algos-mp.mp4",
+      "file": "slides/fiche-algos-mp/",
       "tool": "ressources (fiche MP)",
-      "kind": "document slideshow",
+      "kind": "photo slideshow (carousel)",
       "source_document": "Algorithmes à connaître - Fiche (Mementos), Lycée Masséna (Svartz), MP 1ère année, from prep-upp.com/ressources",
       "music": {
-        "style": "produced CC BY",
-        "key": "Sascha Ende, Happy Beats / Business Moves Vol. 9 (sped up to 120 BPM)"
+        "style": "none on IG/FB carousel; TikTok: trending sound added on the PC"
       },
       "slot": "sat 2026-11-21 14:00",
       "nom": "MP algorithms sheet",
       "match": "Les algos à connaître pour le concours",
-      "duree_s": 16,
-      "accroche": "real document page + title from frame 0",
-      "musique": "Sascha Ende Vol. 9 (CC BY)",
-      "experiment": "first document slideshow (summary sheet) instead of a site demo",
+      "duree_s": null,
+      "accroche": "cover slide: big title + chapter chips + \"Swipe →\"",
+      "musique": "trending TikTok sound (PC); none on IG/FB",
+      "experiment": "first photo carousel (summary sheet), like @concoursprepa slideshows; measure saves and shares",
       "buffer_posts": {
-        "instagram": "6af9c491b9a106584cb46e7a",
-        "facebook": "6af9c4c5c5b364e062606363"
+        "instagram": "6af9c75eb9a106584cb55fa7",
+        "facebook": "6af9c776e5a113497af3b6ec"
       },
       "tiktok": {
-        "file": "videos/prepup-fiche-algos-mp-tiktok.mp4",
-        "caption": "Les algos à connaître pour le concours, en 6 pages 💻\n\n→ Recherche, dichotomie, méthode de Newton, pivot de Gauss\n→ Intégration, Euler, tris (fusion, rapide…) avec le code Python\n→ La fiche complète (Lycée Masséna) sur prep-upp.com/ressources (lien en bio)\n\nEnregistre-la pour tes révisions, et commente le chapitre que tu veux en fiche 👇\n\n#prepa #classeprepa #python #informatique #concoursingenieur #prepascientifique",
+        "type": "photos",
+        "images": [
+          "slides/fiche-algos-mp/slide-01.jpg",
+          "slides/fiche-algos-mp/slide-02.jpg",
+          "slides/fiche-algos-mp/slide-03.jpg",
+          "slides/fiche-algos-mp/slide-04.jpg",
+          "slides/fiche-algos-mp/slide-05.jpg",
+          "slides/fiche-algos-mp/slide-06.jpg",
+          "slides/fiche-algos-mp/slide-07.jpg",
+          "slides/fiche-algos-mp/slide-08.jpg"
+        ],
+        "caption": "Les algos à connaître pour le concours, en 6 pages 💻\n\n→ Recherche, dichotomie, méthode de Newton, pivot de Gauss\n→ Intégration, Euler, tris (fusion, rapide…) avec le code Python\n→ Fiche : Lycée Masséna · d'autres fiches, cours et TD sur prep-upp.com/ressources (lien en bio)\n\nEnregistre-la pour tes révisions 📌 et commente le chapitre que tu veux en fiche 👇\n\n#prepa #classeprepa #python #informatique #concoursingenieur #prepascientifique",
         "slot_local": "2026-11-21 14:00",
         "mood": "chill study lofi",
         "status": "to_post"
-      }
+      },
+      "format": "8 images 1080x1350: cover, 6 real pages, end card"
     }
   ],
   "music_used": [
@@ -155,8 +165,7 @@
     "pop / C major (calculateur)",
     "lofi / F major 7ths (ressources)",
     "trap / A minor (notes-a-viser)",
-    "pop / D major (places-2026)",
-    "Sascha Ende Vol. 9, CC BY (fiche-algos-mp)"
+    "pop / D major (places-2026)"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
@@ -270,7 +279,11 @@
       "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel",
       "12 Nov 2026: added a first-frame rule (real app + number from frame 0, no title card), after the rolling-number hook raised the watch share but not the ~3 s seconds watched (preliminary data)",
       "14 Nov 2026: target length narrowed from 15-22 s to 15-18 s, after the 21 s calculator reel's watch share beat the 31.5 s reel's by 5.8 pts while the seconds watched stayed ~3 s; pinned-comment experiment reworded after zero comments on 6 posts",
-      "15 Nov 2026: stopped generated music (audience feedback: « Lsott madhabik tehki nta wlla haja wllla aala9al chouf 8onneya tanja7 »). Instagram/Facebook now use produced CC BY tracks (Sascha Ende); TikTok goes through the user's PC with a trending sound added in TikTok Studio. Added document slideshows from the site's resources."
+      "15 Nov 2026: stopped generated music (audience feedback: « Lsott madhabik tehki nta wlla haja wllla aala9al chouf 8onneya tanja7 »). Instagram/Facebook now use produced CC BY tracks (Sascha Ende); TikTok goes through the user's PC with a trending sound added in TikTok Studio. Added document slideshows from the site's resources.",
+      {
+        "date": "2026-11-15",
+        "change": "Résumés/cours/TD now go out as photo carousels (IG/FB via Buffer, TikTok photo post via the PC with a trending sound), starting with the MP algorithms sheet. Videos stay for site features."
+      }
     ]
   },
   "dashboard": {
