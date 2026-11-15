@@ -280,10 +280,7 @@
       "12 Nov 2026: added a first-frame rule (real app + number from frame 0, no title card), after the rolling-number hook raised the watch share but not the ~3 s seconds watched (preliminary data)",
       "14 Nov 2026: target length narrowed from 15-22 s to 15-18 s, after the 21 s calculator reel's watch share beat the 31.5 s reel's by 5.8 pts while the seconds watched stayed ~3 s; pinned-comment experiment reworded after zero comments on 6 posts",
       "15 Nov 2026: stopped generated music (audience feedback: « Lsott madhabik tehki nta wlla haja wllla aala9al chouf 8onneya tanja7 »). Instagram/Facebook now use produced CC BY tracks (Sascha Ende); TikTok goes through the user's PC with a trending sound added in TikTok Studio. Added document slideshows from the site's resources.",
-      {
-        "date": "2026-11-15",
-        "change": "Résumés/cours/TD now go out as photo carousels (IG/FB via Buffer, TikTok photo post via the PC with a trending sound), starting with the MP algorithms sheet. Videos stay for site features."
-      }
+      "2026-11-15: Résumés/cours/TD now go out as photo carousels (IG/FB via Buffer, TikTok photo post via the PC with a trending sound), starting with the MP algorithms sheet. Videos stay for site features."
     ]
   },
   "dashboard": {
