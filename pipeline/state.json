@@ -150,8 +150,7 @@
       "experiment": "first photo carousel (summary sheet), like @concoursprepa slideshows; measure saves and shares",
       "buffer_posts": {
         "instagram": "6af9c75eb9a106584cb55fa7",
-        "facebook": "6af9c776e5a113497af3b6ec",
-        "tiktok": "6afa232e60a910801c4b828e"
+        "facebook": "6af9c776e5a113497af3b6ec"
       },
       "tiktok": {
         "type": "photos",
@@ -168,7 +167,7 @@
         "caption": "Les algos à connaître pour le concours, en 6 pages 💻\n\n→ Recherche, dichotomie, méthode de Newton, pivot de Gauss\n→ Intégration, Euler, tris (fusion, rapide…) avec le code Python\n→ Fiche : Lycée Masséna · d'autres fiches, cours et TD sur prep-upp.com/ressources (lien en bio)\n\nEnregistre-la pour tes révisions 📌 et commente le chapitre que tu veux en fiche 👇\n\n#prepa #classeprepa #python #informatique #concoursingenieur #prepascientifique",
         "slot_local": "2026-11-21 14:00",
         "mood": "chill study lofi",
-        "status": "queued in Buffer"
+        "status": "manual: Rayen posts the photo slideshow from the TikTok app with a trending sound (Sat 21 Nov 14:00)"
       },
       "format": "8 images 1080x1350: cover, 6 real pages, end card"
     }
@@ -308,7 +307,7 @@
   "tiktok_route": {
     "since": "2026-11-15 (evening)",
     "route": "Buffer, like Instagram and Facebook. Music is now inside the videos, so no TikTok in-app sound is needed. The PC scheduled task \"Prep'Up TikTok posting\" is DISABLED; do not use it.",
-    "slideshows": "TikTok photo posts via Buffer (no sound added by Buffer; TikTok may add one)."
+    "slideshows": "TikTok photo slideshows are posted by Rayen from the TikTok phone app with a trending sound (Buffer cannot add music to photo posts, and TikTok cannot add a sound after publishing). Do not queue TikTok photo posts in Buffer. Instagram/Facebook carousels still go through Buffer."
   },
   "beat_sync": {
     "method": "Videos for TikTok: pick a trending song (tokchart.com / charts), get its measured beat positions (AcousticBrainz low-level API, by MusicBrainz id), choose a start second where a beat falls within ~15 ms and tempo is steady, write the real beat times relative to that start into a beats JSON, render with BEATMAP=<json> node render.cjs (composition beat k at 0.5 s is shown exactly on real beat k), upload silent, and put tiktok.sound {search, artist, start_at} so the PC task adds that exact sound at that start point. Never embed the song audio. UPDATE 15 Nov: TikTok library sounds are ~1:00 clips at an unknown point in the song, so the start point cannot be set exactly. The video is tempo-matched to the measured beats; the PC task adds the official sound and stops, and Rayen drags the sound by ear so the first cut hits a beat, then clicks Schedule (tempo match keeps all later cuts on the beat).",
