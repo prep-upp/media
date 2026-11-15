@@ -2,6 +2,15 @@
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const FPS = 30, DUR = Number(process.env.DUR || 21), PAGE = process.env.PAGE || '/__brag/';
+// BEATMAP=file.json: the song's real beat times (s, from the sound's start). Composition beat k (k * COMPBEAT s)
+// is shown exactly at real beat k, linear in between, so every cut lands on the song's beat.
+const COMPBEAT = Number(process.env.COMPBEAT || 0.5);
+const BM = process.env.BEATMAP ? JSON.parse(require('fs').readFileSync(process.env.BEATMAP, 'utf8')) : null;
+function compT(tr) {
+  if (!BM) return tr;
+  let k = 0; while (k < BM.length - 2 && BM[k + 1] <= tr) k++;
+  return COMPBEAT * (k + (tr - BM[k]) / (BM[k + 1] - BM[k]));
+}
 
 (async () => {
   const [mode, out, ...rest] = process.argv.slice(2);
@@ -15,7 +24,7 @@ const FPS = 30, DUR = Number(process.env.DUR || 21), PAGE = process.env.PAGE || 
 
   if (mode === 'stills') {
     for (const t of rest.map(Number)) {
-      await p.evaluate((t) => window.render(t), t);
+      await p.evaluate((t) => window.render(t), Math.max(0, compT(t)));
       await p.screenshot({ path: `${out}/s-${t.toFixed(2)}.png` });
     }
   } else {
@@ -23,7 +32,7 @@ const FPS = 30, DUR = Number(process.env.DUR || 21), PAGE = process.env.PAGE || 
       '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-pix_fmt', 'yuv420p', '-r', String(FPS), out], { stdio: ['pipe', 'inherit', 'inherit'] });
     const N = FPS * DUR, FROM = Number(process.env.FROM || 0), TO = Number(process.env.TO || N);
     for (let i = FROM; i < TO; i++) {
-      await p.evaluate((t) => window.render(t), i / FPS);
+      await p.evaluate((t) => window.render(t), Math.max(0, compT(i / FPS)));
       const buf = await p.screenshot({ type: 'png' });
       if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once('drain', r));
       if (i % 60 === 0) console.log(`frame ${i}/${N}`);
