@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=block" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/ui-DHqtutAy.css" />
+<style>
+  /* one 1080x1350 (4:5) slide, picked with ?s=N */
+  html, body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; background: var(--bg); }
+  body { font-family: var(--font-body); color: var(--text); }
+  .slide { position: absolute; inset: 0; overflow: hidden; background: var(--bg); display: none; }
+  .slide.on { display: block; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5; }
+  .disp { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .pill { display: inline-block; padding: 12px 26px; border-radius: 999px; border: 2px solid var(--border-strong); background: var(--surface-2); font: 700 24px var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+  .brand { position: absolute; left: 56px; bottom: 44px; display: flex; align-items: center; gap: 14px; font: 700 30px var(--font-display); }
+  .brand img { width: 46px; height: 46px; border-radius: 12px; }
+  .count { position: absolute; right: 56px; bottom: 50px; font: 600 24px var(--font-body); color: var(--text-dim); }
+
+  /* cover */
+  .cover .pill { position: absolute; left: 0; right: 0; top: 150px; margin: 0 auto; width: max-content; }
+  .cover h1 { position: absolute; left: 60px; right: 60px; top: 250px; margin: 0; text-align: center; font: 700 116px/1.02 var(--font-display); letter-spacing: -0.035em; }
+  .cover .list { position: absolute; left: 90px; right: 90px; top: 640px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .cover .list span { padding: 14px 24px; border-radius: 16px; background: var(--surface-2); border: 1px solid var(--border-strong); font: 600 30px var(--font-body); }
+  .cover .meta { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font: 500 30px var(--font-body); color: var(--text-dim); }
+  .cover .swipe { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; font: 700 40px var(--font-display); }
+
+  /* page slides */
+  .page .label { position: absolute; left: 56px; right: 56px; top: 44px; display: flex; align-items: center; gap: 18px; }
+  .page .label b { padding: 10px 22px; border-radius: 14px; background: var(--grad); color: #fff; font: 700 34px var(--font-display); letter-spacing: -0.01em; }
+  .page .card { position: absolute; left: 50%; top: 124px; transform: translateX(-50%); height: 1120px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+  .page .card img { display: block; height: 100%; }
+
+  /* end */
+  .end .logo { position: absolute; left: 50%; top: 250px; width: 200px; height: 200px; margin-left: -100px; border-radius: 48px; box-shadow: 0 24px 70px color-mix(in srgb, var(--violet) 55%, transparent); }
+  .end h2 { position: absolute; left: 60px; right: 60px; top: 520px; margin: 0; text-align: center; font: 700 84px/1.05 var(--font-display); letter-spacing: -0.03em; }
+  .end .url { position: absolute; left: 0; right: 0; top: 760px; text-align: center; font: 700 64px var(--font-display); }
+  .end .more { position: absolute; left: 80px; right: 80px; top: 880px; text-align: center; font: 500 32px/1.4 var(--font-body); color: var(--text-dim); }
+  .end .credit { position: absolute; left: 0; right: 0; top: 1150px; text-align: center; font: 500 26px var(--font-body); color: var(--text-dim); }
+</style>
+</head>
+<body>
+  <!-- 1 · cover -->
+  <section class="slide cover">
+    <div class="blob" style="width:700px;height:700px;background:var(--violet);left:-260px;top:-260px"></div>
+    <div class="blob" style="width:640px;height:640px;background:var(--cyan);right:-280px;top:520px"></div>
+    <div class="blob" style="width:560px;height:560px;background:var(--blue);left:160px;bottom:-360px"></div>
+    <div class="pill">Fiche · MP / PC · Informatique</div>
+    <h1>Les algos à <span class="grad-text">connaître</span> pour le concours</h1>
+    <div class="list"><span>Recherche</span><span>Dichotomie</span><span>Newton</span><span>Pivot de Gauss</span><span>Intégration</span><span>Euler</span><span>Tris</span></div>
+    <div class="meta">6 pages · code Python inclus</div>
+    <div class="swipe">Swipe <span class="grad-text">→</span></div>
+    <div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div>
+  </section>
+
+  <!-- 2..7 · the real pages -->
+  <section class="slide page"><div class="label"><b>Recherche · Maximum · Somme</b></div><div class="card"><img src="crop-1.png" alt="" /></div><div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div><div class="count">1 / 6</div></section>
+  <section class="slide page"><div class="label"><b>Motifs · Dichotomie</b></div><div class="card"><img src="crop-2.png" alt="" /></div><div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div><div class="count">2 / 6</div></section>
+  <section class="slide page"><div class="label"><b>Newton · Pivot de Gauss</b></div><div class="card"><img src="crop-3.png" alt="" /></div><div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div><div class="count">3 / 6</div></section>
+  <section class="slide page"><div class="label"><b>Gauss · Intégration · Euler</b></div><div class="card"><img src="crop-4.png" alt="" /></div><div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div><div class="count">4 / 6</div></section>
+  <section class="slide page"><div class="label"><b>Euler · Tris quadratiques</b></div><div class="card"><img src="crop-5.png" alt="" /></div><div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div><div class="count">5 / 6</div></section>
+  <section class="slide page"><div class="label"><b>Tri fusion · Tri rapide</b></div><div class="card"><img src="crop-6.png" alt="" /></div><div class="brand"><img src="logo.png" alt="" /><span>Prep<span class="grad-text">'Up</span></span></div><div class="count">6 / 6</div></section>
+
+  <!-- 8 · end -->
+  <section class="slide end">
+    <div class="blob" style="width:700px;height:700px;background:var(--violet);right:-280px;top:-260px"></div>
+    <div class="blob" style="width:640px;height:640px;background:var(--blue);left:-300px;bottom:-200px"></div>
+    <img class="logo" src="logo.png" alt="" />
+    <h2>D'autres fiches, cours et TD <span class="grad-text">par filière</span></h2>
+    <div class="url grad-text">prep-upp.com/ressources</div>
+    <div class="more">MP, PC, T, BG · 1ère et 2ème année</div>
+    <div class="credit">Fiche : Lycée Masséna (Svartz) · MP / PC</div>
+  </section>
+
+<script>
+  const n = Number(new URLSearchParams(location.search).get('s') || 1);
+  const slides = document.querySelectorAll('.slide');
+  slides[n - 1].classList.add('on');
+  window.ready = (async () => {
+    await document.fonts.ready;
+    await Promise.all([...document.images].map((i) => i.complete || new Promise((r) => (i.onload = i.onerror = r))));
+    return slides.length;
+  })();
+</script>
+</body>
+</html>
