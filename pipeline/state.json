@@ -122,10 +122,10 @@
           "search": "Ramalama (Bang Bang) Róisín Murphy",
           "title": "Ramalama (Bang Bang)",
           "artist": "Róisín Murphy",
-          "start_at": "1:31",
+          "start_at": "TikTok clip default (official sound is a 1:00 clip)",
           "bpm": 107.7,
           "beat_source": "AcousticBrainz low-level beats_position (MBID 277865db-d52b-436f-b9d9-96bc8f166ae1)",
-          "note": "video cuts mapped beat by beat to the song from 1:31; 17.4 s"
+          "note": "Video is tempo-matched to the song (107.7 BPM, cuts on beats). TikTok only offers a 1:00 clip whose position in the song is unknown, so Rayen aligns the phase by ear in the editor (drag the sound) before Schedule."
         }
       }
     },
@@ -300,7 +300,7 @@
   "langue": "Write lessons, strategy, experiments, changelog and the dashboard fields (nom, accroche, musique) in English: they are shown as-is on the user's dashboard. Post captions stay in French for the audience.",
   "tiktok_route": "From 15 Nov 2026 TikTok is NOT posted through Buffer. For each new video the cloud pipeline adds, in its videos entry, a 'tiktok' object: {file: 'videos/<name>-tiktok.mp4' (same video, no music), caption: <French caption>, slot_local: 'YYYY-MM-DD HH:MM' Africa/Tunis, mood: <short music mood>, status: 'to_post'}. A scheduled task on the user's Windows PC (Claude desktop app + Chrome) reads this file, uploads that video in TikTok Studio, adds a trending sound matching 'mood', and schedules it at slot_local. Instagram and Facebook stay on Buffer with free CC BY tracks.",
   "beat_sync": {
-    "method": "Videos for TikTok: pick a trending song (tokchart.com / charts), get its measured beat positions (AcousticBrainz low-level API, by MusicBrainz id), choose a start second where a beat falls within ~15 ms and tempo is steady, write the real beat times relative to that start into a beats JSON, render with BEATMAP=<json> node render.cjs (composition beat k at 0.5 s is shown exactly on real beat k), upload silent, and put tiktok.sound {search, artist, start_at} so the PC task adds that exact sound at that start point. Never embed the song audio.",
+    "method": "Videos for TikTok: pick a trending song (tokchart.com / charts), get its measured beat positions (AcousticBrainz low-level API, by MusicBrainz id), choose a start second where a beat falls within ~15 ms and tempo is steady, write the real beat times relative to that start into a beats JSON, render with BEATMAP=<json> node render.cjs (composition beat k at 0.5 s is shown exactly on real beat k), upload silent, and put tiktok.sound {search, artist, start_at} so the PC task adds that exact sound at that start point. Never embed the song audio. UPDATE 15 Nov: TikTok library sounds are ~1:00 clips at an unknown point in the song, so the start point cannot be set exactly. The video is tempo-matched to the measured beats; the PC task adds the official sound and stops, and Rayen drags the sound by ear so the first cut hits a beat, then clicks Schedule (tempo match keeps all later cuts on the beat).",
     "since": "2026-11-15"
   }
 }
