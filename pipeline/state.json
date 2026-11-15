@@ -110,9 +110,43 @@
       "musique": "pop · D major",
       "experiment": "real app visible from frame 0 (no title card)",
       "buffer_posts": {
-        "tiktok": "6af58822ae66bc26867d699e",
         "instagram": "6af588256311ec67c81c4158",
         "facebook": "6af58828be2095778d9c9b20"
+      },
+      "tiktok": {
+        "file": "videos/prepup-places-2026-tiktok.mp4",
+        "caption": "3 238 places en 2026, école par école 🏫\n\n→ Filtre par filière : MP, PC, T ou BG\n→ Cherche ta spécialité : informatique, génie civil, mécanique…\n→ Le nombre de places de chaque école · prep-upp.com (lien en bio)\n\nCommente l'école que tu vises 👇\n\n#prepa #concours #classeprepa #concoursingenieur #ecoledingenieur #prepascientifique",
+        "slot_local": "2026-11-18 20:00",
+        "mood": "upbeat energetic",
+        "status": "to_post"
+      }
+    },
+    {
+      "file": "videos/prepup-fiche-algos-mp.mp4",
+      "tool": "ressources (fiche MP)",
+      "kind": "document slideshow",
+      "source_document": "Algorithmes à connaître - Fiche (Mementos), Lycée Masséna (Svartz), MP 1ère année, from prep-upp.com/ressources",
+      "music": {
+        "style": "produced CC BY",
+        "key": "Sascha Ende, Happy Beats / Business Moves Vol. 9 (sped up to 120 BPM)"
+      },
+      "slot": "sat 2026-11-21 14:00",
+      "nom": "MP algorithms sheet",
+      "match": "Les algos à connaître pour le concours",
+      "duree_s": 16,
+      "accroche": "real document page + title from frame 0",
+      "musique": "Sascha Ende Vol. 9 (CC BY)",
+      "experiment": "first document slideshow (summary sheet) instead of a site demo",
+      "buffer_posts": {
+        "instagram": "6af9c491b9a106584cb46e7a",
+        "facebook": "6af9c4c5c5b364e062606363"
+      },
+      "tiktok": {
+        "file": "videos/prepup-fiche-algos-mp-tiktok.mp4",
+        "caption": "Les algos à connaître pour le concours, en 6 pages 💻\n\n→ Recherche, dichotomie, méthode de Newton, pivot de Gauss\n→ Intégration, Euler, tris (fusion, rapide…) avec le code Python\n→ La fiche complète (Lycée Masséna) sur prep-upp.com/ressources (lien en bio)\n\nEnregistre-la pour tes révisions, et commente le chapitre que tu veux en fiche 👇\n\n#prepa #classeprepa #python #informatique #concoursingenieur #prepascientifique",
+        "slot_local": "2026-11-21 14:00",
+        "mood": "chill study lofi",
+        "status": "to_post"
       }
     }
   ],
@@ -121,7 +155,8 @@
     "pop / C major (calculateur)",
     "lofi / F major 7ths (ressources)",
     "trap / A minor (notes-a-viser)",
-    "pop / D major (places-2026)"
+    "pop / D major (places-2026)",
+    "Sascha Ende Vol. 9, CC BY (fiche-algos-mp)"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
@@ -228,12 +263,14 @@
       "Real app visible from frame 0 instead of a full-screen title card: testing on Places 2026 (Wed 18 Nov); compare its seconds watched with the ~3 s baseline",
       "Question as the caption's first line instead of a statement: testing on Target grades (Sun 15 Nov)",
       "If people still leave at ~3 s: start the video on the payoff (the result screen) and show how to get it afterwards",
-      "Pinned first comment asking a one-word question (« Ta filière ? MP / PC / T / BG ») to get the first comments: zero so far with caption CTAs"
+      "Pinned first comment asking a one-word question (« Ta filière ? MP / PC / T / BG ») to get the first comments: zero so far with caption CTAs",
+      "Document slideshows (résumés, fiches, TD from prep-upp.com/ressources) alongside the site demos: first one is the MP algorithms sheet (Sat 21 Nov); compare saves and shares with the demos"
     ],
     "changelog": [
       "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel",
       "12 Nov 2026: added a first-frame rule (real app + number from frame 0, no title card), after the rolling-number hook raised the watch share but not the ~3 s seconds watched (preliminary data)",
-      "14 Nov 2026: target length narrowed from 15-22 s to 15-18 s, after the 21 s calculator reel's watch share beat the 31.5 s reel's by 5.8 pts while the seconds watched stayed ~3 s; pinned-comment experiment reworded after zero comments on 6 posts"
+      "14 Nov 2026: target length narrowed from 15-22 s to 15-18 s, after the 21 s calculator reel's watch share beat the 31.5 s reel's by 5.8 pts while the seconds watched stayed ~3 s; pinned-comment experiment reworded after zero comments on 6 posts",
+      "15 Nov 2026: stopped generated music (audience feedback: « Lsott madhabik tehki nta wlla haja wllla aala9al chouf 8onneya tanja7 »). Instagram/Facebook now use produced CC BY tracks (Sascha Ende); TikTok goes through the user's PC with a trending sound added in TikTok Studio. Added document slideshows from the site's resources."
     ]
   },
   "dashboard": {
