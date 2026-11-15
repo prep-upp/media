@@ -111,13 +111,15 @@
       "experiment": "real app visible from frame 0 (no title card)",
       "buffer_posts": {
         "instagram": "6af588256311ec67c81c4158",
-        "facebook": "6af58828be2095778d9c9b20"
+        "facebook": "6af58828be2095778d9c9b20",
+        "tiktok": "6afa2322ff465c57dab2272d",
+        "note": "IG/FB switched to prepup-places-2026-ukhouse.mp4 on 2026-11-15"
       },
       "tiktok": {
         "file": "videos/prepup-places-2026-ukhouse.mp4",
         "caption": "3 238 places en 2026, école par école 🏫\n\n→ Filtre par filière : MP, PC, T ou BG\n→ Cherche ta spécialité : informatique, génie civil, mécanique…\n→ Le nombre de places de chaque école · prep-upp.com (lien en bio)\n\nCommente l'école que tu vises 👇\n\n#prepa #concours #classeprepa #concoursingenieur #ecoledingenieur #prepascientifique",
         "slot_local": "2026-11-18 20:00",
-        "status": "to_post",
+        "status": "queued in Buffer",
         "audio": "own (original music inside the video): upload as is, do not add a TikTok sound"
       },
       "music_generated": {
@@ -148,7 +150,8 @@
       "experiment": "first photo carousel (summary sheet), like @concoursprepa slideshows; measure saves and shares",
       "buffer_posts": {
         "instagram": "6af9c75eb9a106584cb55fa7",
-        "facebook": "6af9c776e5a113497af3b6ec"
+        "facebook": "6af9c776e5a113497af3b6ec",
+        "tiktok": "6afa232e60a910801c4b828e"
       },
       "tiktok": {
         "type": "photos",
@@ -165,7 +168,7 @@
         "caption": "Les algos à connaître pour le concours, en 6 pages 💻\n\n→ Recherche, dichotomie, méthode de Newton, pivot de Gauss\n→ Intégration, Euler, tris (fusion, rapide…) avec le code Python\n→ Fiche : Lycée Masséna · d'autres fiches, cours et TD sur prep-upp.com/ressources (lien en bio)\n\nEnregistre-la pour tes révisions 📌 et commente le chapitre que tu veux en fiche 👇\n\n#prepa #classeprepa #python #informatique #concoursingenieur #prepascientifique",
         "slot_local": "2026-11-21 14:00",
         "mood": "chill study lofi",
-        "status": "to_post"
+        "status": "queued in Buffer"
       },
       "format": "8 images 1080x1350: cover, 6 real pages, end card"
     }
@@ -302,7 +305,11 @@
     "note": "After each run: python3 toolkit/dashboard_files.py, then upload_asset videos.json and strategie.json and update datasets/videos and datasets/strategie with the new urls and updated.at."
   },
   "langue": "Write lessons, strategy, experiments, changelog and the dashboard fields (nom, accroche, musique) in English: they are shown as-is on the user's dashboard. Post captions stay in French for the audience.",
-  "tiktok_route": "From 15 Nov 2026 TikTok is NOT posted through Buffer. For each new video the cloud pipeline adds, in its videos entry, a 'tiktok' object: {file: 'videos/<name>-tiktok.mp4' (same video, no music), caption: <French caption>, slot_local: 'YYYY-MM-DD HH:MM' Africa/Tunis, mood: <short music mood>, status: 'to_post'}. A scheduled task on the user's Windows PC (Claude desktop app + Chrome) reads this file, uploads that video in TikTok Studio, adds a trending sound matching 'mood', and schedules it at slot_local. Instagram and Facebook stay on Buffer with free CC BY tracks.",
+  "tiktok_route": {
+    "since": "2026-11-15 (evening)",
+    "route": "Buffer, like Instagram and Facebook. Music is now inside the videos, so no TikTok in-app sound is needed. The PC scheduled task \"Prep'Up TikTok posting\" is DISABLED; do not use it.",
+    "slideshows": "TikTok photo posts via Buffer (no sound added by Buffer; TikTok may add one)."
+  },
   "beat_sync": {
     "method": "Videos for TikTok: pick a trending song (tokchart.com / charts), get its measured beat positions (AcousticBrainz low-level API, by MusicBrainz id), choose a start second where a beat falls within ~15 ms and tempo is steady, write the real beat times relative to that start into a beats JSON, render with BEATMAP=<json> node render.cjs (composition beat k at 0.5 s is shown exactly on real beat k), upload silent, and put tiktok.sound {search, artist, start_at} so the PC task adds that exact sound at that start point. Never embed the song audio. UPDATE 15 Nov: TikTok library sounds are ~1:00 clips at an unknown point in the song, so the start point cannot be set exactly. The video is tempo-matched to the measured beats; the PC task adds the official sound and stops, and Rayen drags the sound by ear so the first cut hits a beat, then clicks Schedule (tempo match keeps all later cuts on the beat).",
     "since": "2026-11-15",
