@@ -241,5 +241,6 @@
     "url": "https://claude.ai/artifact/Wreee4uZ7pQsL9xzqxLxwN",
     "note": "After each run: python3 toolkit/dashboard_files.py, then upload_asset videos.json and strategie.json and update datasets/videos and datasets/strategie with the new urls and updated.at."
   },
-  "langue": "Write lessons, strategy, experiments, changelog and the dashboard fields (nom, accroche, musique) in English: they are shown as-is on the user's dashboard. Post captions stay in French for the audience."
+  "langue": "Write lessons, strategy, experiments, changelog and the dashboard fields (nom, accroche, musique) in English: they are shown as-is on the user's dashboard. Post captions stay in French for the audience.",
+  "tiktok_route": "From 15 Nov 2026 TikTok is NOT posted through Buffer. For each new video the cloud pipeline adds, in its videos entry, a 'tiktok' object: {file: 'videos/<name>-tiktok.mp4' (same video, no music), caption: <French caption>, slot_local: 'YYYY-MM-DD HH:MM' Africa/Tunis, mood: <short music mood>, status: 'to_post'}. A scheduled task on the user's Windows PC (Claude desktop app + Chrome) reads this file, uploads that video in TikTok Studio, adds a trending sound matching 'mood', and schedules it at slot_local. Instagram and Facebook stay on Buffer with free CC BY tracks."
 }
