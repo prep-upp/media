@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=block" rel="stylesheet" />
+<!-- Prep'Up's own production stylesheet: tokens, .grad-text… -->
+<link rel="stylesheet" href="/assets/ui-DHqtutAy.css" />
+<style>
+  html, body { margin: 0; width: 540px; height: 960px; overflow: hidden; background: var(--bg); }
+  body { font-family: var(--font-body); color: var(--text); }
+  #stage { position: absolute; inset: 0; overflow: hidden; background: var(--bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; }
+  .layer { position: absolute; inset: 0; }
+  .disp { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .vis { visibility: hidden; }
+
+  #pill { position: absolute; left: 0; right: 0; top: 34px; text-align: center; }
+  #pill span { display: inline-block; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface-2); font: 700 13px var(--font-body); letter-spacing: 0.1em; color: var(--text-dim); text-transform: uppercase; }
+  #title { position: absolute; left: 16px; right: 16px; top: 74px; text-align: center; font: 700 42px/1.05 var(--font-display); letter-spacing: -0.02em; }
+  .chip { position: absolute; left: 0; right: 0; top: 136px; text-align: center; }
+  .chip span { display: inline-block; padding: 7px 16px; border-radius: 12px; background: var(--grad); color: #fff; font: 700 19px var(--font-display); letter-spacing: -0.01em; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+
+  #card { position: absolute; left: 20px; right: 20px; top: 192px; height: 744px; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.1); }
+  .pg { position: absolute; left: 0; top: 0; width: 100%; transform-origin: 0 0; visibility: hidden; }
+
+  #outro .logo { position: absolute; left: 50%; top: 230px; width: 120px; height: 120px; margin-left: -60px; border-radius: 30px; box-shadow: 0 18px 50px color-mix(in srgb, var(--violet) 55%, transparent); }
+  #outro .l1 { position: absolute; left: 20px; right: 20px; top: 380px; text-align: center; font: 700 40px/1.1 var(--font-display); letter-spacing: -0.02em; }
+  #outro .url { position: absolute; left: 0; right: 0; top: 486px; text-align: center; font: 700 34px var(--font-display); }
+  #outro .credit { position: absolute; left: 24px; right: 24px; top: 556px; text-align: center; font-size: 17px; color: var(--text-dim); font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer">
+    <div class="blob" id="b1" style="width:480px;height:480px;background:var(--violet)"></div>
+    <div class="blob" id="b2" style="width:420px;height:480px;background:var(--cyan)"></div>
+    <div class="blob" id="b3" style="width:380px;height:380px;background:var(--blue)"></div>
+  </div>
+
+  <div id="pill" class="vis"><span>Fiche · MP · Informatique</span></div>
+  <div id="title" class="vis">Les algos à <span class="grad-text">connaître</span></div>
+  <div id="chips"></div>
+
+  <div id="card" class="vis">
+    <img class="pg" id="pg1" src="page-1.png" alt="" />
+    <img class="pg" id="pg2" src="page-2.png" alt="" />
+    <img class="pg" id="pg3" src="page-3.png" alt="" />
+    <img class="pg" id="pg4" src="page-4.png" alt="" />
+    <img class="pg" id="pg5" src="page-5.png" alt="" />
+    <img class="pg" id="pg6" src="page-6.png" alt="" />
+  </div>
+
+  <div class="layer vis" id="outro">
+    <img class="logo" src="/logo.png" alt="" />
+    <div class="l1">La fiche <span class="grad-text">complète</span></div>
+    <div class="url disp grad-text">prep-upp.com/ressources</div>
+    <div class="credit">6 pages · Fiche : Lycée Masséna (Svartz) · MP / PC</div>
+  </div>
+</div>
+
+<script>
+// ---------- timing (120 BPM: beat 0.5 s, every cut on the beat grid) ----------
+const OUTRO = 13.5, END = 16;
+// slides: [page, start, end, zoom, panFrom, panTo (0..1 of the scrollable height), label]
+const SLIDES = [
+  ['pg1', 0, 2.5, 1.13, 0.0, 0.18, 'Recherche · Maximum · Somme'],
+  ['pg1', 2.5, 4.5, 1.13, 0.45, 0.85, 'Liste croissante · Motifs'],
+  ['pg2', 4.5, 6.5, 1.13, 0.25, 0.75, 'Dichotomie'],
+  ['pg3', 6.5, 8.5, 1.13, 0.0, 0.45, 'Méthode de Newton'],
+  ['pg4', 8.5, 10.5, 1.13, 0.05, 0.6, 'Pivot de Gauss · Intégration'],
+  ['pg5', 10.5, 12.0, 1.13, 0.0, 0.7, 'Euler · Tris quadratiques'],
+  ['pg6', 12.0, OUTRO, 1.13, 0.0, 0.5, 'Tri fusion · Tri rapide'],
+];
+window.EVENTS = { dur: END, cuts: SLIDES.map((s) => s[1]).filter((t) => t > 0).concat([OUTRO]) };
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const eOut = (x) => 1 - Math.pow(1 - x, 3);
+const eInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const eBack = (x) => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, x) => a + (b - a) * x;
+const $ = (id) => document.getElementById(id);
+
+function show(el, t, tin, tout, rise = 20, dur = 0.3) {
+  const a = tin <= 0 ? 1 : eOut(prog(t, tin, tin + dur));
+  const b = tout == null ? 1 : 1 - prog(t, tout - 0.15, tout);
+  el.style.opacity = Math.min(a, b);
+  el.style.transform = `translateY(${(1 - a) * rise - (1 - b) * 8}px)`;
+  el.style.visibility = a * b > 0 ? 'visible' : 'hidden';
+}
+
+const chipEls = SLIDES.map(([, a, b, , , , label]) => {
+  const d = document.createElement('div'); d.className = 'chip vis';
+  const s = document.createElement('span'); s.textContent = label; d.appendChild(s);
+  $('chips').appendChild(d); return [d, a, b];
+});
+
+window.ready = (async () => {
+  await document.fonts.ready;
+  await Promise.all([...document.images].map((i) => i.complete || new Promise((r) => (i.onload = i.onerror = r))));
+  render(0);
+  return true;
+})();
+
+window.render = function (t) {
+  $('b1').style.transform = `translate(${-140 + 40 * Math.sin(t * 0.5)}px, ${-170 + 30 * Math.cos(t * 0.4)}px)`;
+  $('b2').style.transform = `translate(${300 + 30 * Math.cos(t * 0.45)}px, ${330 + 50 * Math.sin(t * 0.35)}px)`;
+  $('b3').style.transform = `translate(${90 + 50 * Math.sin(t * 0.3)}px, ${700 + 30 * Math.cos(t * 0.5)}px)`;
+
+  // title, pill and the first page are all on screen from frame 0
+  show($('pill'), t, 0, OUTRO);
+  show($('title'), t, 0, OUTRO);
+  for (const [el, a, b] of chipEls) show(el, t, a, b, 14, 0.25);
+
+  const card = $('card');
+  const cout = eInOut(prog(t, OUTRO - 0.3, OUTRO));
+  card.style.visibility = t < OUTRO ? 'visible' : 'hidden';
+  card.style.transform = `translateY(${cout * 900}px)`;
+  const cw = card.clientWidth, ch = card.clientHeight;
+
+  document.querySelectorAll('.pg').forEach((p) => { p.style.visibility = 'hidden'; });
+  for (const [id, a, b, zoom, y0, y1] of SLIDES) {
+    if (t < a || t >= b) continue;
+    const p = $(id);
+    const h = cw * zoom * (p.naturalHeight / p.naturalWidth);
+    const range = Math.max(0, h - ch);
+    const k = eInOut(prog(t, a + 0.15, b));
+    const y = lerp(y0, y1, k) * range;
+    // a quick slide-in from the right on each cut, except the very first frame
+    const sx = a === 0 ? 0 : (1 - eOut(prog(t, a, a + 0.25))) * cw * 0.35;
+    const x = (cw - cw * zoom) / 2;
+    p.style.visibility = 'visible';
+    p.style.opacity = a === 0 ? 1 : eOut(prog(t, a, a + 0.2));
+    p.style.transform = `translate(${x + sx}px, ${-y}px) scale(${zoom})`;
+  }
+
+  const o = $('outro');
+  o.style.visibility = t >= OUTRO ? 'visible' : 'hidden';
+  const lg = o.querySelector('.logo'), lp = prog(t, OUTRO, OUTRO + 0.45);
+  lg.style.opacity = prog(t, OUTRO, OUTRO + 0.15);
+  lg.style.transform = `scale(${0.4 + 0.6 * eBack(lp)})`;
+  show(o.querySelector('.l1'), t, OUTRO + 0.15, null, 24);
+  show(o.querySelector('.url'), t, OUTRO + 0.3, null, 24);
+  show(o.querySelector('.credit'), t, OUTRO + 0.45, null, 16);
+};
+</script>
+</body>
+</html>
