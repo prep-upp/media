@@ -13,6 +13,14 @@ p = GenerationParams(caption=caption, lyrics='[Instrumental]', instrumental=True
                      timesignature='4', duration=float(dur), inference_steps=8, shift=3.0, seed=int(seed),
                      thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False)
 c = GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[int(seed)])
+# Free the DiT (about 10 GB in float32 on CPU) once its latents are ready, so the VAE decode fits in RAM.
+import gc
+_orig_decode = h._decode_generate_music_pred_latents
+def _decode_after_freeing_dit(*a, **k):
+    h.model = None
+    gc.collect()
+    return _orig_decode(*a, **k)
+h._decode_generate_music_pred_latents = _decode_after_freeing_dit
 t = time.time()
 r = generate_music(h, None, p, c, save_dir=out)
 print('time', round(time.time() - t), 's', r.success, r.error)

@@ -9,22 +9,21 @@ beat = 60.0 / bpm
 dur = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', vid]))
 
 y, sr = librosa.load(wav, sr=22050, mono=True)
-onset = librosa.onset.onset_strength(y=y, sr=sr)
-tempo, beats = librosa.beat.beat_track(onset_envelope=onset, sr=sr, start_bpm=bpm, tightness=400, units='time')
-# phase of the beat grid (circular mean of beat times mod one beat)
-ang = 2 * np.pi * (np.asarray(beats) % beat) / beat
-phase = (np.angle(np.mean(np.exp(1j * ang))) % (2 * np.pi)) / (2 * np.pi) * beat
-# downbeat: of the 4 positions in a bar, the one with the strongest low-end onsets
+# Downbeat phase: fold the low-band (kick/bass) onset envelope over one bar (4 beats at the known bpm)
+# and take the strongest position. Robust to triplet patterns that fool beat trackers.
 S = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))
 low = librosa.onset.onset_strength(S=librosa.amplitude_to_db(S[:40]), sr=sr)
-times = librosa.times_like(low, sr=sr, hop_length=512)
-def strength(t):
-    return float(np.interp(t, times, low))
+hop = 512 / sr
+bar = 4 * beat
 total = len(y) / sr
-grid = np.arange(phase, total, beat)
-score = [np.mean([strength(t) for t in grid[k::4]]) for k in range(4)]
-k0 = int(np.argmax(score))
-downbeats = grid[k0::4]
+cand = np.arange(0, bar, 0.005)
+def fold(env, ph):
+    ts = np.arange(ph, len(env) * hop, bar)
+    return float(np.mean(np.interp(ts, np.arange(len(env)) * hop, env)))
+score = [fold(low, ph) for ph in cand]
+phase = float(cand[int(np.argmax(score))])
+downbeats = np.arange(phase, total, bar)
+tempo = bpm
 # start on a downbeat after the intro (>= 2 s), leaving room for the whole video
 cands = [t for t in downbeats if t >= 2.0 and t + dur <= total - 0.2] or [t for t in downbeats if t + dur <= total] or [0.0]
 start = float(cands[0])
