@@ -383,5 +383,13 @@
     "since": "2026-11-15",
     "rule": "No default style. For each new video: check what is viral on TikTok that week (tokchart.com US + worldwide), pick a song whose energy fits the video, write an ACE-Step caption describing its STYLE only (genre, groove, instruments, energy; never the title, artist, lyrics or melody), generate 2-3 candidates at the video grid BPM (120) with toolkit/gen_music.py, fit with toolkit/fit_music.py, keep the one with the clearest beat, and note inspired_by in the video entry. Different style from the previous videos when possible.",
     "why": "Rayen: music must feel like current viral songs; audience disliked the generic synth tracks; TikTok library sounds could not be synced."
+  },
+  "routine": {
+    "name": "Prep'Up content routine",
+    "id": "trig_01WSEcRtxXvd3yERtNw8H3xG",
+    "schedule": "Mon and Thu 10:12 Africa/Tunis",
+    "mode": "autonomous: analytics, plan, make and schedule videos (Wed, Sun) and slideshows (Sat), pick the music, update dashboard, one push notification",
+    "since": "2026-11-19",
+    "asked_by": "Rayen: \"make this as a routine, just do what feels right\""
   }
 }
