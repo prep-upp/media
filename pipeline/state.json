@@ -396,5 +396,10 @@
     "mode": "autonomous: analytics, plan, make and schedule videos (Wed, Sun) and slideshows (Sat), pick the music, update dashboard, one push notification",
     "since": "2026-11-19",
     "asked_by": "Rayen: \"make this as a routine, just do what feels right\""
+  },
+  "slideshow_source_rule": {
+    "since": "2026-11-21",
+    "rule": "Slideshow content comes ONLY from documents listed on prep-upp.com/ressources (résumés, fiches, cours, TD, annales). Never from other sites. Always credit the document author/school on the end card and point to prep-upp.com/ressources in the caption.",
+    "asked_by": "Rayen"
   }
 }
