@@ -32,7 +32,9 @@
     "14 Nov (2 videos, 2.5+ days of data each): number hook + 21 s beat text hook + 31.5 s on reach (641 vs 611 TikTok views in a fraction of the time) and watch share (15.2% vs 9.4%), but the seconds watched barely moved (3.2 s vs 3.0 s). Shorter videos help the share; the first 2 seconds are still the bottleneck. Evidence is thin: 2 videos.",
     "Zero comments after 2 videos and 6 posts: the comment CTAs at the end of the captions are not working, probably because people leave before reading. Instagram reach and watch time are far below TikTok's (22 vs 641 views).",
     "19 Nov: Places (static poster frame + app) fell to 1.7 s average watch on TikTok after 16 h, vs ~3.3 s for Target grades. A still first screen loses viewers; open on the payoff with motion. Question-style caption first line (Target grades) brought the first shares (2), still 0 comments.",
-    "Buffer free plan: first comments are not available (paid feature), so the pinned-comment experiment cannot be automated."
+    "Buffer free plan: first comments are not available (paid feature), so the pinned-comment experiment cannot be automated.",
+    "23 Nov: the first TikTok photo slideshow (MP algorithms sheet, trending sound added by Rayen) beat every video: 4.37 s average watched vs 1.8-3.2 s, 244 views in <2 days, 2 shares. Payoff-first video opening (Exam chapters) stayed at 1.81 s. Students engage more with real study documents than with site demos.",
+    "Facebook: photo carousels get almost no reach (1 impression) while video reels get ~200-260; Instagram carousel metrics are not available through Buffer."
   ],
   "videos": [
     {
@@ -205,6 +207,50 @@
         "instagram": "6aff72427020505f2dec2c71",
         "facebook": "6aff72627020505f2dec39a2"
       }
+    },
+    {
+      "file": "slides/genetique-bg/",
+      "tool": "ressources (résumé BG)",
+      "kind": "photo slideshow (carousel)",
+      "slot": "sat 2026-11-28 14:00",
+      "nom": "BG genetics summary",
+      "match": "Tu galères en génétique ?",
+      "duree_s": null,
+      "accroche": "cover: \"Toute la génétique en 5 pages\" + chapter chips + Swipe",
+      "musique": "TikTok: trending sound added by Rayen; none on IG/FB",
+      "source_document": "Génétique 2 (résumé), BG 2ème année, prep-upp.com/ressources (handwritten scan, pages 1-5, lighting flattened with toolkit/fixscan.py)",
+      "experiment": "2 slideshows in one week (Sat + Sun) to confirm slideshows beat videos",
+      "buffer_posts": {
+        "instagram": "6b04058f9c207fed958d92f4",
+        "facebook": "6b04059500ec56c26ff0f508",
+        "tiktok": "6b04059d4d584ce268384004 (reminder)"
+      },
+      "tiktok": {
+        "type": "photos",
+        "status": "Buffer reminder: Rayen adds the sound and posts"
+      }
+    },
+    {
+      "file": "slides/memento-sql/",
+      "tool": "ressources (mémento SQL)",
+      "kind": "photo slideshow (carousel)",
+      "slot": "sun 2026-11-29 13:00",
+      "nom": "SQL memo",
+      "match": "Tu sais écrire une requête SQL au concours ?",
+      "duree_s": null,
+      "accroche": "cover: \"Tout SQL pour le concours\" + keyword chips + Swipe",
+      "musique": "TikTok: trending sound added by Rayen; none on IG/FB",
+      "source_document": "Mémento SQL (Michel), 2ème année PC/PT/BG, prep-upp.com/ressources (3 pages split into 6 half-page slides for readability)",
+      "experiment": "second slideshow of the week; half-page crops for dense typed documents",
+      "buffer_posts": {
+        "instagram": "6b0405aabeaafcdbe0dd510d",
+        "facebook": "6b0405b29c207fed958da284",
+        "tiktok": "6b0405b99c1a68014f62ce54 (reminder)"
+      },
+      "tiktok": {
+        "type": "photos",
+        "status": "Buffer reminder: Rayen adds the sound and posts"
+      }
     }
   ],
   "music_used": [
@@ -339,11 +385,65 @@
           }
         },
         "verdict": "Target grades (question as caption first line, 17 s) held 3.3 s and got the first 2 shares. Places (static number poster + app from frame 0) fell to 1.7 s after 16 h: a still first screen loses people. Next: open on the payoff already in motion."
+      },
+      {
+        "measured": "2026-11-23 (routine)",
+        "fiche-algos-mp slideshow (TikTok, posted by Rayen with a trending sound, ~44 h)": {
+          "tiktok": {
+            "views": 244,
+            "avg_watch_s": 4.37,
+            "likes": 9,
+            "shares": 2,
+            "comments": 0
+          },
+          "instagram": "carousel metrics not reported by Buffer (0)",
+          "facebook": {
+            "impressions": 1
+          }
+        },
+        "chapitres video (~21 h)": {
+          "tiktok": {
+            "views": 120,
+            "avg_watch_s": 1.81,
+            "likes": 3
+          },
+          "instagram": {
+            "views": 18,
+            "avg_watch_s": 2.41
+          },
+          "facebook": {
+            "reach": 200
+          }
+        },
+        "places-2026 video (5 days)": {
+          "tiktok": {
+            "views": 191,
+            "avg_watch_s": 2.01,
+            "likes": 10,
+            "shares": 1
+          }
+        },
+        "notes-a-viser (8 days)": {
+          "tiktok": {
+            "views": 219,
+            "avg_watch_s": 3.22,
+            "shares": 2
+          }
+        },
+        "ressources (9 days)": {
+          "tiktok": {
+            "views": 211,
+            "avg_watch_s": 2.49,
+            "comments": 1
+          }
+        },
+        "verdict": "The TikTok photo slideshow is the best post so far: 4.37 s average watched (videos 1.8-3.2 s), 244 views in under 2 days, 2 shares. Payoff-first video (Exam chapters) did not fix the 2 s drop (1.81 s). Instagram carousel metrics are not reported by Buffer; Facebook slideshow got almost no reach (1 impression) while Facebook video reels reach ~200-260."
       }
     ]
   },
   "strategy": {
     "current": [
+      "Slideshows of real documents from prep-upp.com/ressources are the strongest format (TikTok 4.4 s vs ~2 s for videos): this week 2 slideshows (Sat, Sun) + 1 video (Wed), one post per day; confirm over the next weeks before making it permanent",
       "First frame: the real app on screen plus a big number, with no title card (being tested on Places 2026)",
       "Hook: motion or a number on screen in the first second (never a text-only screen)",
       "Length: 15 to 18 s (shorter raised the watch share from 9.4% to 15.2%)",
@@ -355,7 +455,9 @@
       "Question as the caption's first line instead of a statement: testing on Target grades (Sun 15 Nov)",
       "If people still leave at ~3 s: start the video on the payoff (the result screen) and show how to get it afterwards",
       "Document slideshows (résumés, fiches, TD from prep-upp.com/ressources) alongside the site demos: first one is the MP algorithms sheet (Sat 21 Nov); compare saves and shares with the demos",
-      "Payoff-first opening (10/10 on Exam chapters, Sun 22 Nov): compare seconds watched with Target grades (3.3 s) and Places (1.7 s)"
+      "Payoff-first opening (10/10 on Exam chapters, Sun 22 Nov): compare seconds watched with Target grades (3.3 s) and Places (1.7 s)",
+      "Second slideshow in the same week (Sun 29 Nov) to confirm the slideshow result is not a one-off",
+      "Video in the style of a slideshow: one strong document-like payoff screen per beat, less site UI (test if videos can reach 4 s)"
     ],
     "changelog": [
       "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel",
@@ -365,7 +467,8 @@
       "2026-11-15: Résumés/cours/TD now go out as photo carousels (IG/FB via Buffer, TikTok photo post via the PC with a trending sound), starting with the MP algorithms sheet. Videos stay for site features.",
       "2026-11-15: TikTok videos are now beat-synced to a chosen trending song (cuts mapped to its measured beats, PC task adds the exact sound at a given start point). Slideshows keep a free trending pick by mood.",
       "2026-11-15: back to music inside the video, now original tracks generated with ACE-Step 1.5 in the style of that week's viral songs (no default style). Places uses a UK house track inspired by \"Ramalama (Bang Bang)\".",
-      "19 Nov 2026: payoff-first hook (Exam chapters), question as caption first line kept; pinned-comment experiment dropped (needs paid Buffer plan)."
+      "19 Nov 2026: payoff-first hook (Exam chapters), question as caption first line kept; pinned-comment experiment dropped (needs paid Buffer plan).",
+      "23 Nov 2026 (routine): week of 25-29 Nov = 1 video (Wed) + 2 slideshows (Sat, Sun), after the first slideshow beat every video on TikTok watch time."
     ]
   },
   "dashboard": {
@@ -401,5 +504,11 @@
     "since": "2026-11-21",
     "rule": "Slideshow content comes ONLY from documents listed on prep-upp.com/ressources (résumés, fiches, cours, TD, annales). Never from other sites. Always credit the document author/school on the end card and point to prep-upp.com/ressources in the caption.",
     "asked_by": "Rayen"
-  }
+  },
+  "slideshow_docs_used": [
+    "Algorithmes à connaître - Fiche (Mementos)",
+    "Génétique 2 (résumé)",
+    "Mémento SQL - Fiche (Mementos)"
+  ],
+  "slideshow_tools": "toolkit/make_slides.py <spec.json> (specs in toolkit/slide-specs/) + node shoot-slides.cjs <outdir> slides-<name>; toolkit/fixscan.py cleans phone scans (most BG résumés are CamScanner photos). Dense typed pages: split into halves with card_css width-fixed cards."
 }
