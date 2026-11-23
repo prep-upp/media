@@ -251,6 +251,33 @@
         "type": "photos",
         "status": "Buffer reminder: Rayen adds the sound and posts"
       }
+    },
+    {
+      "file": "videos/prepup-apprendre.mp4",
+      "tool": "apprendre à apprendre",
+      "kind": "site demo",
+      "slot": "wed 2026-11-25 20:00",
+      "nom": "Learning methods",
+      "match": "Tu révises en relisant ton cours ? ❌",
+      "duree_s": 15.5,
+      "accroche": "relatable question hook from frame 0 while the page quiz gets answered; then the 7 methods highlighted one per beat; planner adds a chapter",
+      "musique": "Original AI Latin pop / moombahton (inspired by the worldwide Latin pop trend, e.g. \"Bonito\"), ACE-Step 1.5",
+      "music_generated": {
+        "model": "ACE-Step 1.5 turbo",
+        "caption": "Viral TikTok Latin pop, bouncy moombahton groove, bright reggaeton-style percussion and shakers, warm plucked guitar riff, punchy kick, catchy whistle-like synth hook, sunny feel-good energy, polished modern mix",
+        "bpm": 120,
+        "key": "A minor",
+        "seed": 44,
+        "inspired_by": "Latin pop trend on the worldwide TikTok chart (e.g. \"Bonito\", Thiago Navarro Music): style only",
+        "wav": "music/apprendre-latin.wav",
+        "chosen_by": "routine (clearest beat: 0.67 @0.5 s, 0.78 @1 s); Rayen can swap"
+      },
+      "experiment": "relatable mistake as the hook (question to the viewer) instead of a number",
+      "buffer_posts": {
+        "tiktok": "6b04081651038c931bac35aa",
+        "instagram": "6b04081a9c1a68014f63b8d3",
+        "facebook": "6b04081c4d584ce268393691"
+      }
     }
   ],
   "music_used": [
@@ -260,7 +287,8 @@
     "trap / A minor (notes-a-viser)",
     "pop / D major (places-2026)",
     "ACE-Step UK house (inspired by Ramalama) – places-2026",
-    "ACE-Step dance-pop (inspired by Housewife) – chapitres"
+    "ACE-Step dance-pop (inspired by Housewife) – chapitres",
+    "ACE-Step Latin pop / moombahton – apprendre"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
@@ -510,5 +538,13 @@
     "Génétique 2 (résumé)",
     "Mémento SQL - Fiche (Mementos)"
   ],
-  "slideshow_tools": "toolkit/make_slides.py <spec.json> (specs in toolkit/slide-specs/) + node shoot-slides.cjs <outdir> slides-<name>; toolkit/fixscan.py cleans phone scans (most BG résumés are CamScanner photos). Dense typed pages: split into halves with card_css width-fixed cards."
+  "slideshow_tools": "toolkit/make_slides.py <spec.json> (specs in toolkit/slide-specs/) + node shoot-slides.cjs <outdir> slides-<name>; toolkit/fixscan.py cleans phone scans (most BG résumés are CamScanner photos). Dense typed pages: split into halves with card_css width-fixed cards.",
+  "rotation_done": [
+    "calculateur (rang estimé)",
+    "ressources",
+    "notes à viser",
+    "places 2026",
+    "chapitres du concours",
+    "apprendre à apprendre"
+  ]
 }
