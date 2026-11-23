@@ -1,0 +1,12 @@
+{"name": "memento-sql",
+ "pages": ["/home/user/media-work/docs/sql/h1a.png", "/home/user/media-work/docs/sql/h1b.png", "/home/user/media-work/docs/sql/h2a.png", "/home/user/media-work/docs/sql/h2b.png", "/home/user/media-work/docs/sql/h3a.png", "/home/user/media-work/docs/sql/h3b.png"],
+ "labels": ["Tables · Clés primaires et étrangères", "NULL · Agrégats · COUNT · SELECT", "FROM · WHERE · Prédicats", "Sous-requêtes · GROUP BY · ORDER BY", "Jointures vs produit cartésien", "Opérateurs ensemblistes · Python et SQLite"],
+ "pill": "Mémento · Informatique · 2ème année",
+ "title_html": "Tout <span class=\"grad-text\">SQL</span> pour le concours",
+ "chips": ["SELECT", "WHERE", "GROUP BY", "HAVING", "JOIN", "COUNT · AVG", "Sous-requêtes"],
+ "meta": "3 pages · MP, PC, T, BG",
+ "end_title_html": "D'autres mémentos, cours et TD <span class=\"grad-text\">par filière</span>",
+ "end_more": "MP, PC, T, BG · 1ère et 2ème année",
+ "credit": "Mémento SQL (Michel) · partagé sur prep-upp.com/ressources",
+ "crop": [0, 0, 1, 1],
+ "card_css": ".page .card{left:50px;right:50px;width:auto;transform:none;height:auto;top:50%;margin-top:-330px} .page .card img{width:100%;height:auto}"}
