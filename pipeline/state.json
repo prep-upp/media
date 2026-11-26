@@ -34,7 +34,8 @@
     "19 Nov: Places (static poster frame + app) fell to 1.7 s average watch on TikTok after 16 h, vs ~3.3 s for Target grades. A still first screen loses viewers; open on the payoff with motion. Question-style caption first line (Target grades) brought the first shares (2), still 0 comments.",
     "Buffer free plan: first comments are not available (paid feature), so the pinned-comment experiment cannot be automated.",
     "23 Nov: the first TikTok photo slideshow (MP algorithms sheet, trending sound added by Rayen) beat every video: 4.37 s average watched vs 1.8-3.2 s, 244 views in <2 days, 2 shares. Payoff-first video opening (Exam chapters) stayed at 1.81 s. Students engage more with real study documents than with site demos.",
-    "Facebook: photo carousels get almost no reach (1 impression) while video reels get ~200-260; Instagram carousel metrics are not available through Buffer."
+    "Facebook: photo carousels get almost no reach (1 impression) while video reels get ~200-260; Instagram carousel metrics are not available through Buffer.",
+    "26 Nov: the relatable-question hook (Learning methods) also stayed at 1.79 s. Hooks do not move site-demo videos (1.8-2.0 s for 5 in a row); the slideshow is at 4.25 s. Next: test a video made like a slideshow (information cards, no site UI) before dropping site demos."
   ],
   "videos": [
     {
@@ -466,12 +467,58 @@
           }
         },
         "verdict": "The TikTok photo slideshow is the best post so far: 4.37 s average watched (videos 1.8-3.2 s), 244 views in under 2 days, 2 shares. Payoff-first video (Exam chapters) did not fix the 2 s drop (1.81 s). Instagram carousel metrics are not reported by Buffer; Facebook slideshow got almost no reach (1 impression) while Facebook video reels reach ~200-260."
+      },
+      {
+        "measured": "2026-11-26 (routine)",
+        "apprendre video (Wed 25, ~14 h)": {
+          "tiktok": {
+            "views": 137,
+            "avg_watch_s": 1.79,
+            "likes": 7,
+            "shares": 0
+          },
+          "instagram": "no metrics yet",
+          "facebook": "no metrics yet"
+        },
+        "fiche-algos-mp slideshow (TikTok, 5 days)": {
+          "tiktok": {
+            "views": 253,
+            "avg_watch_s": 4.25,
+            "likes": 9,
+            "shares": 2,
+            "reach": 249
+          }
+        },
+        "chapitres video (4 days)": {
+          "tiktok": {
+            "views": 130,
+            "avg_watch_s": 1.82,
+            "likes": 4
+          },
+          "instagram": {
+            "views": 48,
+            "avg_watch_s": 2.15,
+            "reach": 36
+          },
+          "facebook": {
+            "reach": 222
+          }
+        },
+        "places video (8 days)": {
+          "tiktok": {
+            "views": 194,
+            "avg_watch_s": 2.0,
+            "shares": 1
+          }
+        },
+        "verdict": "5 site-demo videos in a row sit at 1.8-2.0 s on TikTok whatever the hook (number, payoff, relatable question). The one slideshow holds 4.25 s and has the most views (253). The site-demo format itself is the problem, not the hook."
       }
     ]
   },
   "strategy": {
     "current": [
       "Slideshows of real documents from prep-upp.com/ressources are the strongest format (TikTok 4.4 s vs ~2 s for videos): this week 2 slideshows (Sat, Sun) + 1 video (Wed), one post per day; confirm over the next weeks before making it permanent",
+      "Videos: stop filming the site UI as the main content; test information-card videos (one saveable fact per beat, like a slideshow) starting Wed 2 Dec",
       "First frame: the real app on screen plus a big number, with no title card (being tested on Places 2026)",
       "Hook: motion or a number on screen in the first second (never a text-only screen)",
       "Length: 15 to 18 s (shorter raised the watch share from 9.4% to 15.2%)",
@@ -485,7 +532,7 @@
       "Document slideshows (résumés, fiches, TD from prep-upp.com/ressources) alongside the site demos: first one is the MP algorithms sheet (Sat 21 Nov); compare saves and shares with the demos",
       "Payoff-first opening (10/10 on Exam chapters, Sun 22 Nov): compare seconds watched with Target grades (3.3 s) and Places (1.7 s)",
       "Second slideshow in the same week (Sun 29 Nov) to confirm the slideshow result is not a one-off",
-      "Video in the style of a slideshow: one strong document-like payoff screen per beat, less site UI (test if videos can reach 4 s)"
+      "Card video \"10/10\" (Wed 2 Dec): chapters present at every session 2017-2026 per filière, no site UI; compare TikTok seconds watched with the ~1.9 s site demos and the 4.25 s slideshow"
     ],
     "changelog": [
       "9 Nov 2026: switched from text hooks / 31.5 s to motion-or-number hooks / 15-22 s, after a 3 s average watch time on the « 6 outils » reel",
@@ -496,7 +543,8 @@
       "2026-11-15: TikTok videos are now beat-synced to a chosen trending song (cuts mapped to its measured beats, PC task adds the exact sound at a given start point). Slideshows keep a free trending pick by mood.",
       "2026-11-15: back to music inside the video, now original tracks generated with ACE-Step 1.5 in the style of that week's viral songs (no default style). Places uses a UK house track inspired by \"Ramalama (Bang Bang)\".",
       "19 Nov 2026: payoff-first hook (Exam chapters), question as caption first line kept; pinned-comment experiment dropped (needs paid Buffer plan).",
-      "23 Nov 2026 (routine): week of 25-29 Nov = 1 video (Wed) + 2 slideshows (Sat, Sun), after the first slideshow beat every video on TikTok watch time."
+      "23 Nov 2026 (routine): week of 25-29 Nov = 1 video (Wed) + 2 slideshows (Sat, Sun), after the first slideshow beat every video on TikTok watch time.",
+      "26 Nov 2026 (routine): site-demo hooks exhausted (all ~1.9 s); Wed 2 Dec becomes an information-card video built from the chapters data."
     ]
   },
   "dashboard": {

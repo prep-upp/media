@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=block" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/ui-Cd1AC88O.css" />
+<style>
+  html, body { margin: 0; width: 540px; height: 960px; overflow: hidden; background: var(--bg); }
+  body { font-family: var(--font-body); color: var(--text); }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; }
+  .vis { visibility: hidden; }
+  #top { position: absolute; left: 20px; right: 20px; top: 46px; text-align: center; }
+  #top .big { font: 700 96px/0.95 var(--font-display); letter-spacing: -0.04em; }
+  #top .t { margin-top: 10px; font: 700 30px/1.1 var(--font-display); letter-spacing: -0.02em; }
+  #top .s { margin-top: 8px; font: 500 18px var(--font-body); color: var(--text-dim); }
+  .card { position: absolute; left: 22px; right: 22px; top: 280px; padding: 26px 24px 24px; border-radius: 26px; background: color-mix(in srgb, var(--surface-2) 92%, transparent); border: 1px solid var(--border-strong); box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+  .fil { display: inline-block; padding: 10px 24px; border-radius: 999px; background: var(--grad); color: #fff; font: 700 34px var(--font-display); }
+  .row { margin-top: 26px; }
+  .row .ep { font: 600 17px var(--font-body); color: var(--text-dim); text-transform: uppercase; letter-spacing: .08em; }
+  .row .nm { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-top: 4px; font: 700 30px/1.12 var(--font-display); }
+  .row .nm b { flex: none; font-size: 28px; }
+  .years { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-top: 10px; }
+  .years span { height: 40px; border-radius: 9px; display: grid; place-items: center; font: 600 11.5px var(--font-body); color: #fff; background: #1f9d6a; opacity: .18; }
+  #outro .logo { position: absolute; left: 50%; top: 250px; width: 128px; height: 128px; margin-left: -64px; border-radius: 32px; }
+  #outro .name { position: absolute; left: 0; right: 0; top: 405px; text-align: center; font: 700 76px var(--font-display); }
+  #outro .url { position: absolute; left: 0; right: 0; top: 510px; text-align: center; font: 700 26px var(--font-display); }
+  #outro .tag { position: absolute; left: 30px; right: 30px; top: 566px; text-align: center; font: 500 20px var(--font-body); color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="blob" id="b1" style="width:480px;height:480px;background:var(--violet)"></div>
+  <div class="blob" id="b2" style="width:420px;height:480px;background:var(--cyan)"></div>
+  <div class="blob" id="b3" style="width:380px;height:380px;background:var(--blue)"></div>
+  <div id="top" class="vis"><div class="big grad-text">10/10</div><div class="t">Tombés à <span class="grad-text">chaque</span> concours</div><div class="s">10 sessions sur 10, de 2017 à 2026</div></div>
+  <div id="cards"></div>
+  <div class="vis" id="outro" style="position:absolute;inset:0">
+    <img class="logo" src="/logo.png" alt="" />
+    <div class="name">Prep<span class="grad-text">'Up</span></div>
+    <div class="url grad-text">prep-upp.com/chapitres-concours</div>
+    <div class="tag">Tous les chapitres, épreuve par épreuve · MP, PC, T, BG</div>
+  </div>
+</div>
+<script>
+const T = { outro: 12.5, end: 15.5 };
+const CARDS = [
+  ['MP', 0, 3, [['Maths II', 'Réduction des endomorphismes'], ['Chimie', 'Cristallographie']]],
+  ['PC', 3, 6, [['Maths', 'Intégrales à paramètre']]],
+  ['T', 6, 9, [['Maths', 'Intégrales à paramètre']]],
+  ['BG', 9, 12.5, [['Maths', 'Probabilités'], ['Géologie', 'Déformations de la lithosphère'], ['Bio animale', 'Le système nerveux']]],
+];
+window.EVENTS = { dur: T.end, cuts: [3, 6, 9, T.outro] };
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const eOut = (x) => 1 - Math.pow(1 - x, 3);
+const eInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+const eBack = (x) => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const $ = (id) => document.getElementById(id);
+const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+const cardEls = CARDS.map(([fil, a, b, rows]) => {
+  const c = document.createElement('div'); c.className = 'card vis';
+  c.innerHTML = '<span class="fil">' + fil + '</span>' + rows.map(([ep, nm]) => '<div class="row"><div class="ep">' + ep + '</div><div class="nm"><span>' + nm + '</span><b class="grad-text">10/10</b></div><div class="years">' + YEARS.map((y) => '<span>' + y + '</span>').join('') + '</div></div>').join('');
+  $('cards').appendChild(c); return [c, a, b];
+});
+window.ready = (async () => { await document.fonts.ready; await Promise.all([...document.images].map((i) => i.complete || new Promise((r) => (i.onload = i.onerror = r)))); render(0); return true; })();
+window.render = function (t) {
+  $('b1').style.transform = 'translate(' + (-140 + 40 * Math.sin(t * 0.5)) + 'px,' + (-170 + 30 * Math.cos(t * 0.4)) + 'px)';
+  $('b2').style.transform = 'translate(' + (300 + 30 * Math.cos(t * 0.45)) + 'px,' + (330 + 50 * Math.sin(t * 0.35)) + 'px)';
+  $('b3').style.transform = 'translate(' + (90 + 50 * Math.sin(t * 0.3)) + 'px,' + (700 + 30 * Math.cos(t * 0.5)) + 'px)';
+  const top = $('top'); const tout = 1 - prog(t, T.outro - 0.25, T.outro);
+  top.style.visibility = t < T.outro ? 'visible' : 'hidden'; top.style.opacity = tout;
+  const pulse = 1 + 0.06 * Math.exp(-((t % 0.5) / 0.12));
+  top.querySelector('.big').style.transform = 'scale(' + pulse + ')';
+  for (const [c, a, b] of cardEls) {
+    const on = t >= a && t < b;
+    c.style.visibility = on ? 'visible' : 'hidden';
+    if (!on) continue;
+    const ip = a === 0 ? 1 : eOut(prog(t, a, a + 0.3)), op = 1 - eInOut(prog(t, b - 0.2, b));
+    c.style.opacity = Math.min(ip, op);
+    c.style.transform = 'translateX(' + ((1 - ip) * 120 - (1 - op) * 120) + 'px) scale(' + (0.96 + 0.04 * ip) + ')';
+    // year chips light up on 16th notes after the card lands (all lit on the very first frame)
+    c.querySelectorAll('.years').forEach((yr, r) => yr.querySelectorAll('span').forEach((s, i) => {
+      const at = a === 0 ? -1 : a + 0.25 + r * 0.25 + i * 0.0625;
+      s.style.opacity = t >= at ? 1 : 0.18;
+      s.style.transform = 'scale(' + (t >= at ? 1 + 0.25 * Math.exp(-(t - at) / 0.08) : 1) + ')';
+    }));
+  }
+  const o = $('outro'); o.style.visibility = t >= T.outro ? 'visible' : 'hidden';
+  const lg = o.querySelector('.logo'), lp = prog(t, T.outro, T.outro + 0.45);
+  lg.style.opacity = prog(t, T.outro, T.outro + 0.15); lg.style.transform = 'scale(' + (0.4 + 0.6 * eBack(lp)) + ')';
+  for (const [sel, d] of [['.name', 0.15], ['.url', 0.3], ['.tag', 0.45]]) { const e = o.querySelector(sel), p = eOut(prog(t, T.outro + d, T.outro + d + 0.4)); e.style.opacity = p; e.style.transform = 'translateY(' + (1 - p) * 26 + 'px)'; }
+};
+</script>
+</body>
+</html>
