@@ -279,6 +279,34 @@
         "instagram": "6b04081a9c1a68014f63b8d3",
         "facebook": "6b04081c4d584ce268393691"
       }
+    },
+    {
+      "file": "videos/prepup-dix-sur-dix.mp4",
+      "tool": "chapitres du concours (data cards)",
+      "kind": "information-card video (no site UI)",
+      "slot": "wed 2026-12-02 20:00",
+      "nom": "10/10 chapters",
+      "match": "Ces chapitres sont tombés à CHAQUE concours depuis 2017. Tu les maîtrises ?",
+      "duree_s": 15.5,
+      "accroche": "big \"10/10 · Tombés à chaque concours\" + MP card with all 10 years lit on frame 0; one filière card per 3 s, year chips light up on 16th notes",
+      "musique": "Original AI Brazilian funk / montagem (inspired by the montagem trend on the worldwide chart), ACE-Step 1.5",
+      "music_generated": {
+        "model": "ACE-Step 1.5 turbo",
+        "caption": "Viral TikTok Brazilian funk montagem, hard punchy tamborzão drum groove, deep booming 808 bass, chopped vocal shouts, hypnotic synth stab hook, high energy, club-ready modern mix",
+        "bpm": 120,
+        "key": "G minor",
+        "seed": 777,
+        "inspired_by": "Brazilian funk montagem trend (e.g. \"Montagem da Chupeta\", worldwide TikTok chart, Nov 2026): style only",
+        "wav": "music/dix-sur-dix-funk.wav",
+        "chosen_by": "routine (clearest beat: 0.73 @0.5 s, 0.79 @1 s)"
+      },
+      "experiment": "video made like a slideshow: information cards instead of the site UI",
+      "data": "chapters present at 10/10 sessions in src/data/chapitres_concours_*.json",
+      "buffer_posts": {
+        "tiktok": "6b0927d5776ce21276f27422",
+        "instagram": "6b0927f7049983dcfb95be80",
+        "facebook": "6b092801658222306cec7d82"
+      }
     }
   ],
   "music_used": [
@@ -289,7 +317,8 @@
     "pop / D major (places-2026)",
     "ACE-Step UK house (inspired by Ramalama) – places-2026",
     "ACE-Step dance-pop (inspired by Housewife) – chapitres",
-    "ACE-Step Latin pop / moombahton – apprendre"
+    "ACE-Step Latin pop / moombahton – apprendre",
+    "ACE-Step Brazilian funk montagem – dix-sur-dix"
   ],
   "analytics": {
     "how": "Before each new video: pull sent posts with metrics from Buffer, record them per video and platform, compare videos, then update 'lessons' and 'strategy'. Metrics refresh about daily: treat posts younger than 48 h as preliminary.",
